@@ -2,15 +2,14 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 
 export default defineConfig({
   site: 'https://northstriderconsulting.com',
-  // Marketing pages stay statically prerendered. The /api/contact route opts out
-  // via `export const prerender = false` and is rendered on demand by the Node adapter.
-  // Swap this adapter for @astrojs/vercel, @astrojs/netlify, or @astrojs/cloudflare without
-  // touching the route code.
-  adapter: node({ mode: 'standalone' }),
+  // Marketing pages stay statically prerendered (served from Vercel's CDN edge).
+  // /api/contact opts out via `export const prerender = false` and is built into a
+  // Vercel serverless function automatically.
+  adapter: vercel(),
   integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
