@@ -330,26 +330,41 @@ service tile carry the offering on their own.
 
 ### Phase D — Tech surface + credibility (data-dependent)
 
-- [ ] **AgentForce** — surface in Implementation and Managed Services bullets;
-      employee with current hands-on experience.
-- [ ] **CPQ** — surface in Implementation; explicit "uncommon skillset" framing.
-- [ ] **CI/CD** — short callout (paragraph or sub-section) on Services or System
-      Mapping. CI/CD is a meaningful differentiator in this space — most Salesforce
-      shops still ship via change sets — so it earns real estate, not a footnote.
-      Name **Gearset** (broad applicability), **Copado** (enterprise-graded),
-      **Prodly** (CPQ deployments — client confirmed this is in scope), and
-      **Salesforce DX + GitHub Actions** (engineering depth, ties to GitHub on the
-      "prior work with" line).
-- [ ] **Org Health Audit framing** — keep mentioning, treated as a formal,
-      semi-quantitative deliverable rather than ad-hoc activity. Capability the team
-      is building toward; copy can be aspirational without overclaiming.
-- [ ] **LogoStrip — names-only revival.** Re-import on homepage. Replace the
-      placeholder text wordmarks with `Prior work with teams at GitHub, Komatsu,
-      Splunk, [more]`. **No logo artwork** — written permission is not in hand;
-      names-in-prose is the legally-clean treatment.
-- [ ] **CertificationsStrip — needs data.** Goal copy: "40+ Salesforce certifications
-      across the team." Surface lead names on About once confirmed (e.g.,
-      Karlton Knight, PMP). Awaiting employee list from client → LinkedIn cert scrape.
+- [x] **AgentForce** — surfaced as a tile bullet on `ServicesGrid.astro`
+      Implementation ("AgentForce + CPQ specialties") and Managed Services
+      ("AgentForce tuning"); detailed deliverables added on `services.astro` for
+      both Implementation ("AgentForce setup and rollout — hands-on experience on
+      the team") and Managed Services ("AgentForce ongoing support and tuning").
+- [x] **CPQ** — surfaced on Implementation as a tile bullet and as a deliverable
+      with explicit "uncommon Salesforce skillset, in-house here" framing on
+      `services.astro`.
+- [x] **CI/CD callout** — new section on `services.astro` immediately above the
+      CTA. Eyebrow "Engineering practice", heading "We ship via CI/CD, not change
+      sets.", lead paragraph framing the change-sets default as the differentiator,
+      and a 2×2 hairline-divider grid naming Gearset, Copado, Prodly, and
+      Salesforce DX + GitHub Actions with one-line descriptors each.
+- [x] **Org Health Audit framing** — `services.astro` Optimization deliverable
+      reworded to "Org Health Audit — a structured, written review across
+      architecture, automation, security, and adoption; delivered as a formal
+      artifact, not a verbal walkthrough." `ServicesGrid` bullet capitalized to
+      "Org Health Audit" so it reads as a proper deliverable name.
+- [x] **LogoStrip — names-only revival.** Component rewritten to a single
+      centered prose treatment: eyebrow "Prior work with", body "Teams at GitHub
+      · Komatsu · Splunk and others." No logo artwork. TODO marker points at
+      open input #5 for additional names.
+- [x] **CertificationsStrip** — populated from the lead consultant's LinkedIn
+      credential listing (one employee currently carries the bulk of the team's
+      certs; non-overlapping additions land as other team members are confirmed).
+      Heading reframed to "Active Salesforce certifications." 7 Salesforce certs
+      shown as the visual focal point: ADM (Administrator), PAB (Platform App
+      Builder), BAN (Business Analyst), UXD (User Experience Designer), STR
+      (Strategy Designer), AIA (AI Associate), AGB (Agentblazer Champion).
+      Tail line accounts for 19 additional credentials across the Salesforce
+      ecosystem (Conga, ServiceMax, DocuSign) and process disciplines (Lean Six
+      Sigma, PMI methodologies, design thinking). Expired credentials
+      (Manufacturing Cloud Accredited, PMP, Prodly) and LinkedIn-Learning
+      courses excluded from the count. TODO markers retained for Trailblazer
+      profile links per cert and for roster updates as the team grows.
 
 ### Open inputs needed from client
 
