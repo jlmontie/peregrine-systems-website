@@ -1,0 +1,54 @@
+---
+const pillars = [
+  {
+    number: "01",
+    title: "True Consulting",
+    body: "We push back before we build. The wrong ask, executed cleanly, is still the wrong outcome — so we challenge requirements at the start of every engagement and scope toward solutions that scale.",
+    href: "/about",
+    linkLabel: "How we work",
+  },
+  {
+    number: "02",
+    title: "Usable Knowledge",
+    body: "Standard documentation lives in silos. We deliver one visual map of your business process with the underlying automation overlaid — so stakeholders can see the whole picture and make decisions on it.",
+    href: "/system-mapping",
+    linkLabel: "See System Mapping",
+  },
+];
+---
+
+<section class="section bg-[color:var(--color-cream-2)]">
+  <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
+    <div class="grid gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-end">
+      <div>
+        <span class="eyebrow">How we're different</span>
+        <h2 class="mt-4 text-3xl sm:text-4xl md:text-5xl">Two pillars.</h2>
+        <span class="rule-divider mt-6"></span>
+      </div>
+      <p class="text-base leading-relaxed text-[color:var(--color-ink-muted)] md:max-w-prose">
+        The work runs on two ideas — one about the conversation that should happen before you build,
+        the other about how the system gets understood once it's running.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-px overflow-hidden rounded border border-[color:var(--color-rule)] bg-[color:var(--color-rule)] sm:grid-cols-2">
+      {
+        pillars.map((p) => (
+          <article class="bg-[color:var(--color-cream)] p-8">
+            <span class="font-[Fraunces,serif] text-xs tracking-[0.3em] text-[color:var(--color-gold)]">
+              {p.number}
+            </span>
+            <h3 class="mt-3 text-2xl">{p.title}</h3>
+            <p class="mt-4 text-sm leading-relaxed text-[color:var(--color-ink-2)]">{p.body}</p>
+            <a
+              href={p.href}
+              class="mt-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-[color:var(--color-gold)] link-underline"
+            >
+              {p.linkLabel} <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

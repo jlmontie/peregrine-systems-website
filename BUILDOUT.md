@@ -100,14 +100,14 @@ Reads as intentional rather than placeholder-laden.
 ### Phase 2 — Productionize (concurrent with Phase 1)
 
 - [ ] **Domain**
-  - [ ] Point `[brand-domain.tld]` and `www.` at Vercel (A/CNAME records per Vercel docs) — domain TBD between `peregrinesystems.io` and `peregrinesys.com`
+  - [ ] Point `peregrinesys.com` and `www.` at Vercel (A/CNAME records per Vercel docs)
   - [ ] Confirm `https://` enforced and www → apex (or apex → www) redirect set in Vercel
   - [ ] Verify production deployment loads at the real domain
 - [ ] **Email (Resend)**
-  - [ ] Add `[brand-domain.tld]` as a domain in Resend
+  - [ ] Add `peregrinesys.com` as a domain in Resend
   - [ ] Add the SPF/DKIM/DMARC DNS records the Resend dashboard provides
   - [ ] Wait for verification (usually <1 hour after DNS propagates)
-  - [ ] Set `CONTACT_FROM_EMAIL` env var to `Peregrine Systems <hello@[brand-domain.tld]>`
+  - [ ] Set `CONTACT_FROM_EMAIL` env var to `Peregrine Systems <hello@peregrinesys.com>`
         (or whatever sender alias they want)
 - [ ] **Vercel env vars** (Production + Preview)
   - [ ] `RESEND_API_KEY`
@@ -166,8 +166,9 @@ These block specific Phase 1 / 2 / 3 edits. Asked in priority order.
 4. Do you have written permission from any prior clients to use their logo / write a case
    study about the engagement?
 5. Founder/principal name + role + headshot + 2-paragraph bio + LinkedIn URL
-6. Is `hello@[brand-domain.tld]` the correct destination for contact-form
-   submissions? Or a different inbox/alias? (Domain itself still TBD.)
+6. Email aliases — code currently defaults destination to `team@peregrinesys.com`
+   (`CONTACT_TO_EMAIL`) and sender to `Peregrine Systems <hello@peregrinesys.com>`
+   (`CONTACT_FROM_EMAIL`). Confirm both, or specify alternates.
 7. Is there a domain registrar/DNS account we have access to, or do we need to send the
    client DNS records to add themselves?
 8. Are they OK with cookieless analytics (Plausible, ~$9/mo) or do they want GA4 (free)?
@@ -284,16 +285,21 @@ Build passes; 5 prerendered routes remain (`/`, `/about`, `/services`, `/industr
 Restructure About around the client-provided What/How/Why. Surface the two pillars on
 the homepage.
 
-- [ ] **About page** — restructure into three blocks (What we do / How we do it /
-      Why we do it) anchored on the client's mission statement, leading with True
-      Consulting and Usable Knowledge as the two named pillars.
-- [ ] **Homepage pillars callout** — short band introducing True Consulting and
-      Usable Knowledge between `ServicesGrid` and CTA. Eyebrow + heading + 2–3
-      sentences each, each linking to its respective treatment (About for True
-      Consulting, `/system-mapping` for Usable Knowledge).
-- [ ] **Wedge-against-large-SIs block** — short copy block on About (or homepage),
-      framed without naming competitors. Sets up the size-of-firm question on our
-      terms instead of the prospect's.
+- [x] **About page** — restructured into three blocks (What we do / How we do it /
+      Why we do it). What-we-do leads with True Consulting and Usable Knowledge as
+      named pillars; How-we-do-it carries senior-led / configure-first / outcomes
+      principles inline; Why-we-do-it holds the mission paragraph (TODO marker for
+      client sign-off, open input #2) and the wedge block. Founder block and
+      original Norse-themed origin story removed.
+- [x] **Homepage pillars callout** — new `PillarsBand.astro` component inserted
+      between `ServicesGrid` and `PrinciplesBand` on the homepage. Eyebrow "How
+      we're different" + heading "Two pillars" + two-column hairline-divider grid;
+      True Consulting links to `/about`, Usable Knowledge links to `/system-mapping`
+      (page does not yet exist — Phase C).
+- [x] **Wedge-against-large-SIs block** — landed inside the About "Why we do it"
+      section as the closing paragraph. No competitor named; framed as the size /
+      generalist double-bind ("large doesn't mean responsive; generalist doesn't
+      mean qualified for your specifics").
 
 ### Phase C — System Mapping treatment (the major unique value-add)
 
