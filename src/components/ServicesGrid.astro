@@ -31,6 +31,12 @@ const defaultServices: Service[] = [
     bullets: ["Backlog triage & releases", "User support & training", "Quarterly roadmap"],
     href: "/services#managed",
   },
+  {
+    title: "System Mapping",
+    description: "Make the org legible. One visual map of the business process with the underlying automation overlaid — so every decision lands on something everyone can see.",
+    bullets: ["End-to-end process map", "Automation overlay", "Living source of truth"],
+    href: "/system-mapping",
+  },
 ];
 
 const { services = defaultServices } = Astro.props;
@@ -45,7 +51,7 @@ const { services = defaultServices } = Astro.props;
         <span class="rule-divider mt-6"></span>
       </div>
       <p class="text-base leading-relaxed text-[color:var(--color-ink-muted)] md:max-w-prose">
-        We work with Salesforce teams from small to enterprise — fresh orgs, inherited orgs, and orgs that have stopped working the way the business does. Three engagement shapes. One outcome: a CRM your team actually uses.
+        We work with Salesforce teams from small to enterprise — fresh orgs, inherited orgs, and orgs that have stopped working the way the business does. Four shapes the work takes: build, fix, run, and map. One outcome: a CRM your team actually uses.
       </p>
     </div>
 

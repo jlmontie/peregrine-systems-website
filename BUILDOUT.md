@@ -307,21 +307,26 @@ Three surfaces, per client's emphasis. If the homepage feels heavy after all thr
 land, the homepage callout is the first thing to scale back — the dedicated page and
 service tile carry the offering on their own.
 
-- [ ] **Service tile** in `ServicesGrid.astro` — fourth tile alongside Implementation,
-      Optimization, Managed Services. Final four tiles tell a story: build new orgs
-      (Implementation) · fix existing orgs (Optimization) · run them with you
-      (Managed Services) · make them legible the whole time (System Mapping).
-- [ ] **Dedicated page** at `/system-mapping`. Sections:
-  - *What it is* — visual end-to-end business-process map with automation overlay.
-  - *Why it matters* — interception points for new features (grooming tickets),
-    prevents the "we asked for the wrong thing" failure mode, gives developers a
-    place to suggest improvements proactively.
-  - *How we deliver it* — Mermaid / flow-chart artifacts maintained alongside the
-    org as it evolves; not a one-time deliverable, an ongoing source of truth.
-  - *What you get* — artifact list (the diagram itself, the change log, integration
-    with our Managed Services workflow).
-- [ ] **Homepage callout** — short band linking to the dedicated page. Pairs
-      naturally with the True Consulting / Usable Knowledge pillar block in Phase B.
+- [x] **Service tile** in `ServicesGrid.astro` — fourth tile added. Grid now lays
+      out 2×2 on desktop. Intro line updated from "Three engagement shapes" to
+      "Four shapes the work takes: build, fix, run, and map." Tile copy and bullets
+      frame System Mapping as the legibility / artifact offering.
+- [x] **Dedicated page** at `/system-mapping` (`src/pages/system-mapping.astro`).
+      Four sections in order: *What it is* (narrative + illustrative Mermaid
+      diagram, generic B2B Lead → Fulfillment flow with automation overlays);
+      *Why it matters* (3-card grid: interception points, anti-wrong-ask, proactive
+      dev input); *How we deliver it* (2-paragraph narrative on living artifact +
+      Managed Services integration); *What you get* (4-item deliverables list).
+      Mermaid renders client-side via jsdelivr ESM CDN, themed to peregrine palette.
+      Diagram block labeled "Illustrative example" — TODO marker points at open
+      input #3 for client-supplied real artifact.
+- [x] **Homepage callout** — new `SystemMappingBand.astro` slotted between
+      `PillarsBand` and `PrinciplesBand`. Asymmetric layout: text + CTA on the left,
+      decorative three-layer card stack on the right (suggesting overlay /
+      legibility, not a literal diagram). Reads as the close-up zoom on the Usable
+      Knowledge pillar without duplicating the diagram from `/system-mapping`.
+- [x] **Footer Services nav** — System Mapping link added under
+      `/services#implementation` / `#optimization` / `#managed`.
 
 ### Phase D — Tech surface + credibility (data-dependent)
 

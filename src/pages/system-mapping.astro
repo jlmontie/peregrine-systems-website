@@ -1,0 +1,211 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import CTABand from "../components/CTABand.astro";
+
+// TODO: Replace illustrative example with a sanitized real artifact once the
+// client provides one (BUILDOUT.md open input #3).
+const exampleDiagram = `flowchart TD
+  Lead([Lead Created]):::process
+  Qual{Qualified?}:::decision
+  Opp([Opportunity]):::process
+  Prop([Proposal Sent]):::process
+  Won([Closed Won]):::process
+  Order([Order Created]):::process
+  Fulfil([Fulfillment]):::process
+  Disq([Disqualified]):::muted
+
+  Lead -->|Web-to-Lead Flow| Qual
+  Qual -->|Yes — Routing Apex| Opp
+  Qual -->|No| Disq
+  Opp -->|Quote Sync| Prop
+  Prop --> Won
+  Won -->|Order Sync Integration| Order
+  Order -->|ERP Webhook| Fulfil
+
+  classDef process fill:#FBFAF5,stroke:#9C7B25,stroke-width:1.5px,color:#1B1F23
+  classDef decision fill:#F0E5C4,stroke:#9C7B25,stroke-width:1.5px,color:#1B1F23
+  classDef muted fill:#F0E5C4,stroke:#B0A48A,stroke-width:1px,color:#5B6066
+`;
+
+const why = [
+  {
+    title: "Interception points are obvious.",
+    body: "When new features land on a diagram of the existing system, scoping conversations happen against a shared picture. Stakeholders see exactly where the change touches and what depends on it.",
+  },
+  {
+    title: "The wrong-ask failure mode disappears.",
+    body: "Most rework comes from building the literal request without questioning whether it's the right request. A visible map makes the underlying intent legible — and the gap between intent and ask easy to close.",
+  },
+  {
+    title: "Developers can suggest improvements proactively.",
+    body: "Engineers don't have to wait for a ticket to flag a fragile pattern. The map gives them a place to point at — and the org gets cleaner over time, not just when something breaks.",
+  },
+];
+
+const deliverables = [
+  "The diagram itself — Mermaid source committed alongside your code, or shared in your team's workspace",
+  "An automation inventory: every Flow, Apex trigger, scheduled job, and integration mapped to the process it serves",
+  "A change log of how the system has evolved, version-controlled with the diagram",
+  "Integration into our Managed Services workflow — every release updates the map before it ships",
+];
+---
+
+<BaseLayout
+  title="System Mapping — Peregrine Systems"
+  description="An end-to-end visual map of your Salesforce-backed business process with the underlying automation overlaid. One artifact, kept current as the org evolves."
+>
+  <PageHeader
+    eyebrow="System Mapping"
+    title="See the org. Then change it."
+    lede="An end-to-end visual map of your business process, with the underlying Salesforce automation overlaid on the same diagram. One artifact — replacing the documentation that lives in five places — kept current as the org evolves."
+  />
+
+  {/* What it is — narrative on the left, illustrative diagram on the right (stacked on mobile). */}
+  <section class="section">
+    <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
+      <div class="grid gap-12 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-start">
+        <div>
+          <span class="eyebrow">What it is</span>
+          <h2 class="mt-4 text-3xl sm:text-4xl">One picture of the whole system.</h2>
+          <span class="rule-divider mt-6"></span>
+          <div class="mt-6 space-y-5 text-base leading-relaxed text-[color:var(--color-ink-2)]">
+            <p>
+              Standard Salesforce documentation lives in silos: a process diagram in one tool, a list of
+              Flows in setup, an integration map in a Confluence page no one updates. Each is partial.
+              Together they don't compose into a thing anyone can reason about.
+            </p>
+            <p>
+              A System Map combines them. The business process — leads, opportunities, orders, whatever
+              your org actually does — runs along the diagram. The automation that drives each
+              transition is overlaid on top: which Flow fires here, which Apex trigger runs there, which
+              integration syncs to which downstream system.
+            </p>
+            <p>
+              The result is one artifact that stakeholders, admins, and developers can all read against —
+              and decide on.
+            </p>
+          </div>
+        </div>
+
+        <figure class="rounded border border-[color:var(--color-rule)] bg-[color:var(--color-cream)] p-5 sm:p-6">
+          <figcaption class="flex items-center justify-between gap-4 border-b border-[color:var(--color-rule)] pb-3 mb-4">
+            <span class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
+              Illustrative example
+            </span>
+            <span class="font-[Fraunces,serif] text-xs italic text-[color:var(--color-gold)]">
+              Lead → Fulfillment
+            </span>
+          </figcaption>
+          <pre class="mermaid m-0 overflow-x-auto text-sm leading-tight text-[color:var(--color-ink-2)]">{exampleDiagram}</pre>
+          <p class="mt-4 text-xs text-[color:var(--color-ink-muted)]">
+            Generic B2B sales-to-fulfillment flow. The labels on the arrows are the automation overlay —
+            the Flows, Apex, and integrations driving each transition.
+          </p>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  {/* Why it matters */}
+  <section class="section bg-[color:var(--color-cream-2)]">
+    <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
+      <div class="text-center">
+        <span class="eyebrow">Why it matters</span>
+        <h2 class="mt-4 text-3xl sm:text-4xl">The artifact carries weight.</h2>
+        <span class="rule-divider rule-divider-center mt-6"></span>
+      </div>
+
+      <div class="mt-14 grid gap-10 md:grid-cols-3">
+        {
+          why.map((w, i) => (
+            <article class="relative pl-6 border-l border-[color:var(--color-gold)]/60">
+              <div class="font-[Fraunces,serif] text-xs tracking-[0.3em] text-[color:var(--color-gold)]">
+                0{i + 1}
+              </div>
+              <h3 class="mt-3 text-xl leading-snug">{w.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">{w.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* How we deliver it */}
+  <section class="section">
+    <div class="mx-auto w-full max-w-5xl px-5 sm:px-8">
+      <div>
+        <span class="eyebrow">How we deliver it</span>
+        <h2 class="mt-4 text-3xl sm:text-4xl">Living artifact, not a one-time deliverable.</h2>
+        <span class="rule-divider mt-6"></span>
+      </div>
+
+      <div class="mt-10 grid gap-10 md:grid-cols-2 text-base leading-relaxed text-[color:var(--color-ink-2)]">
+        <p>
+          The first version of the map is built during a focused engagement: we walk the process with
+          your team, inventory the automation in the org, and render it as a single diagram. Two to
+          four weeks for most orgs.
+        </p>
+        <p>
+          After that, the map is maintained as the org changes. Every Flow added, every integration
+          rewired, every business-process shift updates the diagram before it ships. It works best as
+          part of an ongoing engagement — typically integrated into our Managed Services — so the
+          artifact never falls behind.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* What you get */}
+  <section class="section bg-[color:var(--color-cream-2)]">
+    <div class="mx-auto w-full max-w-5xl px-5 sm:px-8">
+      <div>
+        <span class="eyebrow">What you get</span>
+        <h2 class="mt-4 text-3xl sm:text-4xl">Deliverables.</h2>
+        <span class="rule-divider mt-6"></span>
+      </div>
+
+      <ul class="mt-10 space-y-4 text-base">
+        {
+          deliverables.map((d) => (
+            <li class="flex items-start gap-4 border-b border-[color:var(--color-rule)] pb-4">
+              <span aria-hidden="true" class="mt-3 inline-block h-px w-4 bg-[color:var(--color-gold)] flex-shrink-0" />
+              <span class="text-[color:var(--color-ink-2)]">{d}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <CTABand
+    heading="Map your org with us."
+    body="Tell us about the process you're trying to make legible. We'll come back with a scoped plan for the first version of the map."
+    primaryLabel="Schedule a 30-minute consultation"
+  />
+</BaseLayout>
+
+<script is:inline type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    securityLevel: "loose",
+    theme: "base",
+    themeVariables: {
+      fontFamily: "Inter, system-ui, sans-serif",
+      fontSize: "14px",
+      primaryColor: "#FBFAF5",
+      primaryTextColor: "#1B1F23",
+      primaryBorderColor: "#9C7B25",
+      lineColor: "#9C7B25",
+      secondaryColor: "#F0E5C4",
+      tertiaryColor: "#FFFFFF",
+      background: "#FBFAF5",
+    },
+    flowchart: {
+      curve: "basis",
+      padding: 16,
+    },
+  });
+</script>
