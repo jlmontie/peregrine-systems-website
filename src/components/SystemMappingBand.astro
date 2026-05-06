@@ -1,0 +1,114 @@
+<section class="section">
+  <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
+    <div class="grid gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:items-center">
+      <div>
+        <span class="eyebrow">System Mapping</span>
+        <h2 class="mt-4 text-3xl sm:text-4xl md:text-5xl">See your org as one diagram.</h2>
+        <span class="rule-divider mt-6"></span>
+        <p class="mt-6 max-w-prose text-base leading-relaxed text-[color:var(--color-ink-muted)]">
+          End-to-end business process plus the automation driving it, on a single map. A living
+          artifact — kept current as the system evolves, not a snapshot that goes stale the day it ships.
+        </p>
+        <div class="mt-8">
+          <a
+            href="/system-mapping"
+            class="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-[color:var(--color-gold)] link-underline"
+          >
+            See how System Mapping works <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      {/* Abstract preview — three process nodes connected by arrows, with two automation tags
+          tethered to the transitions. Suggests the overlay shape of a real System Map without
+          duplicating the diagram on /system-mapping. */}
+      <div class="md:ml-auto md:mr-0 w-full max-w-lg">
+        <figure class="rounded border border-[color:var(--color-rule)] bg-[color:var(--color-cream)] p-5 sm:p-6">
+          <figcaption class="flex items-center justify-between gap-4 border-b border-[color:var(--color-rule)] pb-3 mb-4">
+            <span class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
+              Preview
+            </span>
+            <span class="font-[Fraunces,serif] text-xs italic text-[color:var(--color-gold)]">
+              Process · Automation
+            </span>
+          </figcaption>
+
+          <svg
+            viewBox="0 0 500 220"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="System map preview: three process nodes connected by arrows with two automation tags below."
+            class="block h-auto w-full"
+          >
+            {/* Section labels */}
+            <text
+              x="6"
+              y="14"
+              font-family="Inter, system-ui, sans-serif"
+              font-size="9"
+              letter-spacing="2"
+              fill="var(--color-ink-muted)"
+            >
+              PROCESS
+            </text>
+            <text
+              x="6"
+              y="142"
+              font-family="Inter, system-ui, sans-serif"
+              font-size="9"
+              letter-spacing="2"
+              fill="var(--color-ink-muted)"
+            >
+              AUTOMATION
+            </text>
+
+            {/* Process nodes */}
+            <g font-family="Fraunces, serif" font-size="14">
+              <rect x="6" y="28" width="120" height="48" rx="4"
+                fill="var(--color-cream)" stroke="var(--color-gold)" stroke-width="1.5" />
+              <text x="66" y="58" text-anchor="middle" fill="var(--color-ink)">Lead</text>
+
+              <rect x="190" y="28" width="120" height="48" rx="4"
+                fill="var(--color-cream)" stroke="var(--color-gold)" stroke-width="1.5" />
+              <text x="250" y="58" text-anchor="middle" fill="var(--color-ink)">Opportunity</text>
+
+              <rect x="374" y="28" width="120" height="48" rx="4"
+                fill="var(--color-cream)" stroke="var(--color-gold)" stroke-width="1.5" />
+              <text x="434" y="58" text-anchor="middle" fill="var(--color-ink)">Closed Won</text>
+            </g>
+
+            {/* Connectors between process nodes */}
+            <g stroke="var(--color-gold)" fill="var(--color-gold)" stroke-width="1.5">
+              <line x1="126" y1="52" x2="184" y2="52" />
+              <polygon points="190,52 182,48 182,56" />
+              <line x1="310" y1="52" x2="368" y2="52" />
+              <polygon points="374,52 366,48 366,56" />
+            </g>
+
+            {/* Dashed tethers from each transition down to its automation tag */}
+            <g stroke="var(--color-gold)" stroke-width="1" stroke-dasharray="2 4" opacity="0.55" fill="none">
+              <path d="M155 76 V 156" />
+              <path d="M339 76 V 156" />
+            </g>
+
+            {/* Automation tags */}
+            <g font-family="Inter, system-ui, sans-serif" font-size="11">
+              <rect x="113" y="156" width="86" height="32" rx="3"
+                fill="var(--color-cream-2)" stroke="var(--color-rule)" stroke-width="1" />
+              <text x="156" y="175" text-anchor="middle" fill="var(--color-ink-2)">Routing Flow</text>
+
+              <rect x="289" y="156" width="100" height="32" rx="3"
+                fill="var(--color-cream-2)" stroke="var(--color-rule)" stroke-width="1" />
+              <text x="339" y="175" text-anchor="middle" fill="var(--color-ink-2)">Quote Sync API</text>
+            </g>
+          </svg>
+
+          <p class="mt-4 text-xs text-[color:var(--color-ink-muted)]">
+            One artifact: the business process up top, the automation that drives each transition
+            tethered below.
+          </p>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>

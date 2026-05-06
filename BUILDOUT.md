@@ -5,12 +5,18 @@
 > work now drive toward launch.
 >
 > **Status:** Astro + Tailwind v4 + MDX + Vercel adapter. Light theme, peregrine branding,
-> all primary pages and a working `/api/contact` endpoint backed by Resend.
+> all primary pages and a working `/api/contact` endpoint backed by Resend. **Phases A–D
+> have landed** (audience widening, mission/positioning rewrite around the two pillars,
+> System Mapping treatment across three surfaces, tech surface + credibility revival).
+> Six prerendered routes: `/`, `/about`, `/services`, `/system-mapping`, `/industries`,
+> `/contact`, plus the `/api/contact` serverless function.
 >
 > **Operating plan:** Sections 1–6 below capture the original generic-launch plan from
 > the skeleton phase. **Section 7 captures client direction from the 2026-05-06
 > conversation and supersedes earlier sections where they conflict** — notably audience
 > widening, service taxonomy, and the addition of System Mapping as a flagship offering.
+> Outstanding work consolidates in Section 7's Phase 2 (productionize: domain, email,
+> analytics, legal, SEO) and the Open Inputs list at the end of Section 7.
 
 ---
 
@@ -51,9 +57,10 @@ That's worse than blandness — it's a credibility liability the moment a real p
 ### Out (until client returns content)
 
 - **Industries page** — hidden from nav; file remains in `src/pages/industries.astro`
-- **Sample case study** — kept in `src/content/case-studies/` but `draft: true` so it does
-  not render in the index or the homepage tease (empty state shows instead)
-- **Founder photo + bio block** on About — replaced with a neutral "about the team" block
+- **Case studies surface** — removed entirely in Phase A (no index, no detail route, no
+  content collection). When real engagements are written, Phase 3 brings the surface back.
+- **Founder photo + bio block** — removed entirely in Phase B; About is now structured
+  around What we do / How we do it / Why we do it. A team page can land later if needed.
 - **Hero stat tiles** (10+ years, 6+ certs, --) — removed; will return once we have real numbers
 - **Specific testimonial pull-quotes** — none; we won't fake them
 
@@ -87,27 +94,29 @@ Edits inside the existing components/pages. No new architecture.
   - [ ] Drop the "Salesforce Partner badge — pending" indicator if client prefers no
         commitment-signal placeholder
 
-### Phase 1 — Resolved: LogoStrip and CertificationsStrip hidden for v1
+### Phase 1 — Superseded: LogoStrip and CertificationsStrip back on the homepage
 
-Decision: **Option 1.** Both sections removed from the homepage; CertificationsStrip
-removed from the About page. Component files remain at
-`src/components/LogoStrip.astro` and `src/components/CertificationsStrip.astro` for
-re-use when real client logos and confirmed certs arrive (see Phase 3).
+The original Phase 1 decision hid both strips for v1. **Phase D revived both with
+data-aware treatments:** LogoStrip is now a names-in-prose treatment ("Prior work
+with — Teams at GitHub · Komatsu · Splunk and others"), and CertificationsStrip is
+populated from the lead consultant's LinkedIn credential listing (7 Salesforce certs
+shown as badges, plus a tail line accounting for 19 adjacent credentials). Both are
+back on the homepage; CertificationsStrip is also on About.
 
-Result: homepage compresses to **Hero → Services → Case Study (empty state) → CTA**.
-Reads as intentional rather than placeholder-laden.
+Current homepage flow: **Hero → LogoStrip → Services → Pillars → SystemMapping →
+Principles → Certifications → CTA**.
 
 ### Phase 2 — Productionize (concurrent with Phase 1)
 
 - [ ] **Domain**
-  - [ ] Point `[brand-domain.tld]` and `www.` at Vercel (A/CNAME records per Vercel docs) — domain TBD between `peregrinesystems.io` and `peregrinesys.com`
+  - [ ] Point `peregrinesys.com` and `www.` at Vercel (A/CNAME records per Vercel docs)
   - [ ] Confirm `https://` enforced and www → apex (or apex → www) redirect set in Vercel
   - [ ] Verify production deployment loads at the real domain
 - [ ] **Email (Resend)**
-  - [ ] Add `[brand-domain.tld]` as a domain in Resend
+  - [ ] Add `peregrinesys.com` as a domain in Resend
   - [ ] Add the SPF/DKIM/DMARC DNS records the Resend dashboard provides
   - [ ] Wait for verification (usually <1 hour after DNS propagates)
-  - [ ] Set `CONTACT_FROM_EMAIL` env var to `Peregrine Systems <hello@[brand-domain.tld]>`
+  - [ ] Set `CONTACT_FROM_EMAIL` env var to `Peregrine Systems <hello@peregrinesys.com>`
         (or whatever sender alias they want)
 - [ ] **Vercel env vars** (Production + Preview)
   - [ ] `RESEND_API_KEY`
@@ -137,15 +146,20 @@ Reads as intentional rather than placeholder-laden.
 
 Each item below is a 5–60 minute edit because the slot already exists.
 
-- [ ] **Salesforce Partner status** → drop badge image into footer, replace "pending" tag
-- [ ] **Real client logos (3–5)** → re-import `LogoStrip` in `src/pages/index.astro`,
-      replace text placeholders inside the component with logo SVGs
-- [ ] **Real Salesforce certifications** → re-import `CertificationsStrip` in
-      `src/pages/index.astro` and `src/pages/about.astro`; swap placeholder badges in
-      the component for official credential SVGs; link each to Trailblazer profile
+- [ ] **Salesforce Partner status** → drop badge image into footer (badge slot was
+      removed in Phase A; re-add when partner confirmation lands)
+- [ ] **Logo artwork upgrade** → swap LogoStrip's names-in-prose treatment for actual
+      logo SVGs once written client permission is in hand for each name
+- [ ] **Trailblazer profile links per cert** → link each `CertificationsStrip` badge to
+      the team member's Trailblazer profile once URLs are consolidated
+- [ ] **Cert roster expansion** → add non-overlapping certs from additional team members
+      as confirmed; bump the "19 additional credentials" tail line accordingly
 - [ ] **AppExchange listing link** → drop into footer + About page
-- [ ] **First case study** → write MDX in `src/content/case-studies/`, set `draft: false`
-- [ ] **Founder photo + bio** → un-hide About founder block, replace `[Founder Name]` placeholders
+- [ ] **Case studies surface** → if/when written client engagements with permission to
+      tell the story arrive, rebuild the surface (index route, detail route, content
+      collection) from scratch — was deleted entirely in Phase A
+- [ ] **Team / lead names on About** → BUILDOUT Section 7 open input #4. When the
+      employee list arrives, surface lead names (e.g. "Karlton Knight, PMP") on About.
 - [ ] **Vertical decision** → re-add Industries to nav once 1–2 verticals chosen; prune the
       industries list to only those
 - [ ] **Calendly / Cal.com embed** → replace placeholder link in Contact sidebar
@@ -158,22 +172,31 @@ Each item below is a 5–60 minute edit because the slot already exists.
 
 ## 4. Open questions for the client
 
-These block specific Phase 1 / 2 / 3 edits. Asked in priority order.
+These gate specific Phase 1 / 2 / 3 edits. Phase A–D resolved several; remaining items
+below. The Section 7 "Open inputs needed" list at the bottom is the priority queue
+for the current client direction — these are the legacy-doc items that haven't migrated
+there yet.
 
 1. Are you a registered Salesforce Partner? (gates partner badge slot)
-2. Which Salesforce certifications does the team hold? (gates cert badges)
-3. Do you have an AppExchange consultant listing? Link?
-4. Do you have written permission from any prior clients to use their logo / write a case
-   study about the engagement?
-5. Founder/principal name + role + headshot + 2-paragraph bio + LinkedIn URL
-6. Is `hello@[brand-domain.tld]` the correct destination for contact-form
-   submissions? Or a different inbox/alias? (Domain itself still TBD.)
-7. Is there a domain registrar/DNS account we have access to, or do we need to send the
+2. Do you have an AppExchange consultant listing? Link?
+3. Do you have written permission from any prior clients to use their logo / write a case
+   study about the engagement? (Phase D shipped names-only on LogoStrip; logo artwork
+   upgrade still gated on this.)
+4. Email aliases — code currently defaults destination to `team@peregrinesys.com`
+   (`CONTACT_TO_EMAIL`) and sender to `Peregrine Systems <hello@peregrinesys.com>`
+   (`CONTACT_FROM_EMAIL`). Confirm both, or specify alternates.
+5. Is there a domain registrar/DNS account we have access to, or do we need to send the
    client DNS records to add themselves?
-8. Are they OK with cookieless analytics (Plausible, ~$9/mo) or do they want GA4 (free)?
-9. Privacy policy: do they have an existing one we should reuse, or write a minimal one?
-10. Vertical / industry focus — even a tentative answer here unlocks much stronger copy
-    in Phase 3
+6. Are they OK with cookieless analytics (Plausible, ~$9/mo) or do they want GA4 (free)?
+7. Privacy policy: do they have an existing one we should reuse, or write a minimal one?
+8. Vertical / industry focus — even a tentative answer here unlocks much stronger copy
+   in Phase 3.
+
+*Resolved by Phase D:* "Which Salesforce certifications does the team hold?" — populated
+from the lead consultant's LinkedIn data; expansion is a roster question (Section 7
+open input #4), not a new ask. *Made moot by Phase B:* "Founder/principal name + role
++ headshot + bio" — the founder block was removed and About was restructured around
+What/How/Why; if a team page lands later, the question returns then.
 
 ---
 
@@ -204,8 +227,15 @@ After launch the practical maintenance shape is:
 
 - **Editing copy:** edit `.astro` files in `src/components/` and `src/pages/`, push to GitHub,
   Vercel auto-deploys.
-- **Adding a case study:** drop a new `.mdx` file into `src/content/case-studies/`. The
-  homepage tease and case studies index pick it up automatically.
+- **Updating the cert roster:** add entries to the `salesforceCerts` array in
+  `src/components/CertificationsStrip.astro` and bump the "19 additional credentials"
+  tail line. Trailblazer profile URLs go on the cert objects once consolidated.
+- **Updating the LogoStrip names list:** add entries to the `teams` array in
+  `src/components/LogoStrip.astro`. Confirm permission first — names-only treatment is
+  legally cleaner than logo artwork without explicit written approval.
+- **Updating the System Mapping example diagram:** replace the `exampleDiagram` Mermaid
+  source in `src/pages/system-mapping.astro` with a sanitized real artifact when one is
+  available (Section 7 open input #3).
 - **Toggling Industries page back on:** add the entry back to the `nav` array in
   `src/components/Header.astro`.
 - **Rotating Resend keys:** update `RESEND_API_KEY` in Vercel env vars and redeploy.
@@ -284,16 +314,21 @@ Build passes; 5 prerendered routes remain (`/`, `/about`, `/services`, `/industr
 Restructure About around the client-provided What/How/Why. Surface the two pillars on
 the homepage.
 
-- [ ] **About page** — restructure into three blocks (What we do / How we do it /
-      Why we do it) anchored on the client's mission statement, leading with True
-      Consulting and Usable Knowledge as the two named pillars.
-- [ ] **Homepage pillars callout** — short band introducing True Consulting and
-      Usable Knowledge between `ServicesGrid` and CTA. Eyebrow + heading + 2–3
-      sentences each, each linking to its respective treatment (About for True
-      Consulting, `/system-mapping` for Usable Knowledge).
-- [ ] **Wedge-against-large-SIs block** — short copy block on About (or homepage),
-      framed without naming competitors. Sets up the size-of-firm question on our
-      terms instead of the prospect's.
+- [x] **About page** — restructured into three blocks (What we do / How we do it /
+      Why we do it). What-we-do leads with True Consulting and Usable Knowledge as
+      named pillars; How-we-do-it carries senior-led / configure-first / outcomes
+      principles inline; Why-we-do-it holds the mission paragraph (TODO marker for
+      client sign-off, open input #2) and the wedge block. Founder block and
+      original Norse-themed origin story removed.
+- [x] **Homepage pillars callout** — new `PillarsBand.astro` component inserted
+      between `ServicesGrid` and `PrinciplesBand` on the homepage. Eyebrow "How
+      we're different" + heading "Two pillars" + two-column hairline-divider grid;
+      True Consulting links to `/about`, Usable Knowledge links to `/system-mapping`
+      (page does not yet exist — Phase C).
+- [x] **Wedge-against-large-SIs block** — landed inside the About "Why we do it"
+      section as the closing paragraph. No competitor named; framed as the size /
+      generalist double-bind ("large doesn't mean responsive; generalist doesn't
+      mean qualified for your specifics").
 
 ### Phase C — System Mapping treatment (the major unique value-add)
 
@@ -301,44 +336,64 @@ Three surfaces, per client's emphasis. If the homepage feels heavy after all thr
 land, the homepage callout is the first thing to scale back — the dedicated page and
 service tile carry the offering on their own.
 
-- [ ] **Service tile** in `ServicesGrid.astro` — fourth tile alongside Implementation,
-      Optimization, Managed Services. Final four tiles tell a story: build new orgs
-      (Implementation) · fix existing orgs (Optimization) · run them with you
-      (Managed Services) · make them legible the whole time (System Mapping).
-- [ ] **Dedicated page** at `/system-mapping`. Sections:
-  - *What it is* — visual end-to-end business-process map with automation overlay.
-  - *Why it matters* — interception points for new features (grooming tickets),
-    prevents the "we asked for the wrong thing" failure mode, gives developers a
-    place to suggest improvements proactively.
-  - *How we deliver it* — Mermaid / flow-chart artifacts maintained alongside the
-    org as it evolves; not a one-time deliverable, an ongoing source of truth.
-  - *What you get* — artifact list (the diagram itself, the change log, integration
-    with our Managed Services workflow).
-- [ ] **Homepage callout** — short band linking to the dedicated page. Pairs
-      naturally with the True Consulting / Usable Knowledge pillar block in Phase B.
+- [x] **Service tile** in `ServicesGrid.astro` — fourth tile added. Grid now lays
+      out 2×2 on desktop. Intro line updated from "Three engagement shapes" to
+      "Four shapes the work takes: build, fix, run, and map." Tile copy and bullets
+      frame System Mapping as the legibility / artifact offering.
+- [x] **Dedicated page** at `/system-mapping` (`src/pages/system-mapping.astro`).
+      Four sections in order: *What it is* (narrative + illustrative Mermaid
+      diagram, generic B2B Lead → Fulfillment flow with automation overlays);
+      *Why it matters* (3-card grid: interception points, anti-wrong-ask, proactive
+      dev input); *How we deliver it* (2-paragraph narrative on living artifact +
+      Managed Services integration); *What you get* (4-item deliverables list).
+      Mermaid renders client-side via jsdelivr ESM CDN, themed to peregrine palette.
+      Diagram block labeled "Illustrative example" — TODO marker points at open
+      input #3 for client-supplied real artifact.
+- [x] **Homepage callout** — new `SystemMappingBand.astro` slotted between
+      `PillarsBand` and `PrinciplesBand`. Asymmetric layout: text + CTA on the left,
+      decorative three-layer card stack on the right (suggesting overlay /
+      legibility, not a literal diagram). Reads as the close-up zoom on the Usable
+      Knowledge pillar without duplicating the diagram from `/system-mapping`.
+- [x] **Footer Services nav** — System Mapping link added under
+      `/services#implementation` / `#optimization` / `#managed`.
 
 ### Phase D — Tech surface + credibility (data-dependent)
 
-- [ ] **AgentForce** — surface in Implementation and Managed Services bullets;
-      employee with current hands-on experience.
-- [ ] **CPQ** — surface in Implementation; explicit "uncommon skillset" framing.
-- [ ] **CI/CD** — short callout (paragraph or sub-section) on Services or System
-      Mapping. CI/CD is a meaningful differentiator in this space — most Salesforce
-      shops still ship via change sets — so it earns real estate, not a footnote.
-      Name **Gearset** (broad applicability), **Copado** (enterprise-graded),
-      **Prodly** (CPQ deployments — client confirmed this is in scope), and
-      **Salesforce DX + GitHub Actions** (engineering depth, ties to GitHub on the
-      "prior work with" line).
-- [ ] **Org Health Audit framing** — keep mentioning, treated as a formal,
-      semi-quantitative deliverable rather than ad-hoc activity. Capability the team
-      is building toward; copy can be aspirational without overclaiming.
-- [ ] **LogoStrip — names-only revival.** Re-import on homepage. Replace the
-      placeholder text wordmarks with `Prior work with teams at GitHub, Komatsu,
-      Splunk, [more]`. **No logo artwork** — written permission is not in hand;
-      names-in-prose is the legally-clean treatment.
-- [ ] **CertificationsStrip — needs data.** Goal copy: "40+ Salesforce certifications
-      across the team." Surface lead names on About once confirmed (e.g.,
-      Karlton Knight, PMP). Awaiting employee list from client → LinkedIn cert scrape.
+- [x] **AgentForce** — surfaced as a tile bullet on `ServicesGrid.astro`
+      Implementation ("AgentForce + CPQ specialties") and Managed Services
+      ("AgentForce tuning"); detailed deliverables added on `services.astro` for
+      both Implementation ("AgentForce setup and rollout — hands-on experience on
+      the team") and Managed Services ("AgentForce ongoing support and tuning").
+- [x] **CPQ** — surfaced on Implementation as a tile bullet and as a deliverable
+      with explicit "uncommon Salesforce skillset, in-house here" framing on
+      `services.astro`.
+- [x] **CI/CD callout** — new section on `services.astro` immediately above the
+      CTA. Eyebrow "Engineering practice", heading "We ship via CI/CD, not change
+      sets.", lead paragraph framing the change-sets default as the differentiator,
+      and a 2×2 hairline-divider grid naming Gearset, Copado, Prodly, and
+      Salesforce DX + GitHub Actions with one-line descriptors each.
+- [x] **Org Health Audit framing** — `services.astro` Optimization deliverable
+      reworded to "Org Health Audit — a structured, written review across
+      architecture, automation, security, and adoption; delivered as a formal
+      artifact, not a verbal walkthrough." `ServicesGrid` bullet capitalized to
+      "Org Health Audit" so it reads as a proper deliverable name.
+- [x] **LogoStrip — names-only revival.** Component rewritten to a single
+      centered prose treatment: eyebrow "Prior work with", body "Teams at GitHub
+      · Komatsu · Splunk and others." No logo artwork. TODO marker points at
+      open input #5 for additional names.
+- [x] **CertificationsStrip** — populated from the lead consultant's LinkedIn
+      credential listing (one employee currently carries the bulk of the team's
+      certs; non-overlapping additions land as other team members are confirmed).
+      Heading reframed to "Active Salesforce certifications." 7 Salesforce certs
+      shown as the visual focal point: ADM (Administrator), PAB (Platform App
+      Builder), BAN (Business Analyst), UXD (User Experience Designer), STR
+      (Strategy Designer), AIA (AI Associate), AGB (Agentblazer Champion).
+      Tail line accounts for 19 additional credentials across the Salesforce
+      ecosystem (Conga, ServiceMax, DocuSign) and process disciplines (Lean Six
+      Sigma, PMI methodologies, design thinking). Expired credentials
+      (Manufacturing Cloud Accredited, PMP, Prodly) and LinkedIn-Learning
+      courses excluded from the count. TODO markers retained for Trailblazer
+      profile links per cert and for roster updates as the team grows.
 
 ### Open inputs needed from client
 

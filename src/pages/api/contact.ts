@@ -58,7 +58,7 @@ export const POST: APIRoute = async ({ request, url }) => {
   const input = parsed.data;
 
   const apiKey = import.meta.env.RESEND_API_KEY;
-  const toAddress = import.meta.env.CONTACT_TO_EMAIL ?? "team@northstriderconsulting.com";
+  const toAddress = import.meta.env.CONTACT_TO_EMAIL ?? "team@peregrinesys.com";
   const fromAddress = import.meta.env.CONTACT_FROM_EMAIL ?? "Peregrine Systems Contact <onboarding@resend.dev>";
 
   // Dev mode without a key: log to console, still report success so the form is testable.

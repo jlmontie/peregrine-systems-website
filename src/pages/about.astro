@@ -3,76 +3,138 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeader from "../components/PageHeader.astro";
 import CertificationsStrip from "../components/CertificationsStrip.astro";
 import CTABand from "../components/CTABand.astro";
-import Brandmark from "../components/Brandmark.astro";
 ---
 
 <BaseLayout
   title="About — Peregrine Systems"
-  description="Peregrine Systems is a senior-led Salesforce practice helping teams from small to enterprise get more out of their CRM."
+  description="Peregrine Systems is a senior-led Salesforce practice for teams from small to enterprise. Built around two pillars: True Consulting and Usable Knowledge."
 >
   <PageHeader
     eyebrow="About"
     title="A senior-led Salesforce practice."
-    lede="We started Peregrine Systems because the consultants you actually want on a project are usually the ones a big firm won't put on it. Here, they're the only ones who do the work."
+    lede="We help teams from small to enterprise get more out of Salesforce — through consulting that challenges the brief, and documentation that makes the system legible to everyone who has to work with it."
   />
 
+  {/* What we do — the two named pillars carry this section. */}
   <section class="section">
-    <div class="mx-auto w-full max-w-5xl px-5 sm:px-8 grid gap-12 md:grid-cols-[1fr_1.4fr] items-start">
-      <div class="relative aspect-[4/5] w-full overflow-hidden rounded border border-[color:var(--color-rule)] bg-[color:var(--color-cream-2)]">
-        {/* TODO: Replace with founder photo (warm, candid; not a stock LinkedIn headshot). */}
-        <div class="absolute inset-0 grid place-items-center text-center p-8">
-          <div>
-            <Brandmark decorative class="mx-auto h-14 w-auto" />
-            <p class="mt-6 font-[Fraunces,serif] text-lg text-[color:var(--color-ink-2)]">Founder photo</p>
-            <p class="mt-2 text-xs uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">Placeholder</p>
-          </div>
+    <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
+      <div class="grid gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-end">
+        <div>
+          <span class="eyebrow">What we do</span>
+          <h2 class="mt-4 text-3xl sm:text-4xl md:text-5xl">Two pillars.</h2>
+          <span class="rule-divider mt-6"></span>
         </div>
+        <p class="text-base leading-relaxed text-[color:var(--color-ink-muted)] md:max-w-prose">
+          Most of what makes the work different sits in two ideas. One is about the conversation that
+          should happen before you build. The other is about how the system gets understood once it's
+          running.
+        </p>
       </div>
 
-      <div>
-        <span class="eyebrow">The founder</span>
-        {/* TODO: Replace with founder name + title once confirmed. */}
-        <h2 class="mt-4 text-3xl sm:text-4xl">[Founder Name]</h2>
-        <p class="mt-2 text-[color:var(--color-ink-muted)]">Principal Consultant · Salesforce [Certifications]</p>
-        <span class="rule-divider mt-6"></span>
+      <div class="mt-12 grid gap-px overflow-hidden rounded border border-[color:var(--color-rule)] bg-[color:var(--color-rule)] sm:grid-cols-2">
+        <article class="bg-[color:var(--color-cream)] p-8">
+          <span class="font-[Fraunces,serif] text-xs tracking-[0.3em] text-[color:var(--color-gold)]">01</span>
+          <h3 class="mt-3 text-2xl">True Consulting</h3>
+          <div class="mt-4 space-y-4 text-sm leading-relaxed text-[color:var(--color-ink-2)]">
+            <p>
+              We push back before we build. The wrong ask, executed cleanly, is still the wrong outcome —
+              so we challenge requirements at the start of every engagement and scope toward solutions
+              that scale.
+            </p>
+            <p>
+              The result is less rework, fewer reversals, and an org that holds up as the business grows
+              into it.
+            </p>
+          </div>
+        </article>
 
-        <div class="mt-6 space-y-5 text-base leading-relaxed text-[color:var(--color-ink-2)]">
-          {/* TODO: Founder bio — replace once draft approved. */}
-          <p>
-            [Founder Name] has spent more than a decade in and around Salesforce orgs — first as an in-house admin, then as a senior consultant at [Firm], and now as the founder of Peregrine Systems.
-          </p>
-          <p>
-            The pattern that drove the firm: teams of every size kept getting the wrong shape of help. Big SIs were unresponsive on the specifics that mattered; freelance admins couldn't go deep enough on architecture. Peregrine Systems sits in between — senior-led, configure-first, scoped to outcomes.
-          </p>
-          <p>
-            Outside of work: [hobby], [hobby], based in [city].
-          </p>
-        </div>
-
-        <div class="mt-8 flex flex-wrap items-center gap-4">
-          {/* TODO: Replace with real LinkedIn / Trailblazer profile / AppExchange links. */}
-          <a class="link-underline text-sm text-[color:var(--color-ink-2)]" href="#">LinkedIn →</a>
-          <a class="link-underline text-sm text-[color:var(--color-ink-2)]" href="#">Trailblazer profile →</a>
-          <a class="link-underline text-sm text-[color:var(--color-ink-2)]" href="#">AppExchange listing →</a>
-        </div>
+        <article class="bg-[color:var(--color-cream)] p-8">
+          <span class="font-[Fraunces,serif] text-xs tracking-[0.3em] text-[color:var(--color-gold)]">02</span>
+          <h3 class="mt-3 text-2xl">Usable Knowledge</h3>
+          <div class="mt-4 space-y-4 text-sm leading-relaxed text-[color:var(--color-ink-2)]">
+            <p>
+              Standard documentation lives in silos — one place for the process, another for the
+              automation. We deliver a single visual map of your business process with the underlying
+              automation overlaid.
+            </p>
+            <p>
+              Stakeholders see the whole picture and can make decisions on it. Developers know where new
+              features intercept what's already there.
+            </p>
+          </div>
+          <a
+            href="/system-mapping"
+            class="mt-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-[color:var(--color-gold)] link-underline"
+          >
+            See System Mapping <span aria-hidden="true">→</span>
+          </a>
+        </article>
       </div>
     </div>
   </section>
 
+  {/* How we do it — operating posture. */}
   <section class="section bg-[color:var(--color-cream-2)]">
+    <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
+      <div class="text-center">
+        <span class="eyebrow">How we do it</span>
+        <h2 class="mt-4 text-3xl sm:text-4xl">How the work actually runs.</h2>
+        <span class="rule-divider rule-divider-center mt-6"></span>
+      </div>
+
+      <div class="mt-14 grid gap-10 md:grid-cols-3">
+        <article class="relative pl-6 border-l border-[color:var(--color-gold)]/60">
+          <div class="font-[Fraunces,serif] text-xs tracking-[0.3em] text-[color:var(--color-gold)]">01</div>
+          <h3 class="mt-3 text-xl leading-snug">Senior, not stretched.</h3>
+          <p class="mt-3 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
+            You work with the lead consultant. No layered staffing, no junior account team — just the
+            person doing the work.
+          </p>
+        </article>
+        <article class="relative pl-6 border-l border-[color:var(--color-gold)]/60">
+          <div class="font-[Fraunces,serif] text-xs tracking-[0.3em] text-[color:var(--color-gold)]">02</div>
+          <h3 class="mt-3 text-xl leading-snug">Configure before you code.</h3>
+          <p class="mt-3 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
+            We exhaust declarative tools before reaching for Apex. Your future admin will thank us.
+          </p>
+        </article>
+        <article class="relative pl-6 border-l border-[color:var(--color-gold)]/60">
+          <div class="font-[Fraunces,serif] text-xs tracking-[0.3em] text-[color:var(--color-gold)]">03</div>
+          <h3 class="mt-3 text-xl leading-snug">Outcomes over hours.</h3>
+          <p class="mt-3 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
+            We scope to the result you need. You see exactly what you're getting and what it costs
+            before we start.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  {/* Why we do it — mission, then wedge. */}
+  <section class="section">
     <div class="mx-auto w-full max-w-5xl px-5 sm:px-8">
       <div class="text-center">
-        <span class="eyebrow">Our story</span>
+        <span class="eyebrow">Why we do it</span>
         <h2 class="mt-4 text-3xl sm:text-4xl">Why Peregrine Systems.</h2>
         <span class="rule-divider rule-divider-center mt-6"></span>
       </div>
+
       <div class="mx-auto mt-10 max-w-2xl space-y-5 text-base leading-relaxed text-[color:var(--color-ink-2)]">
-        {/* TODO: Replace with the real origin story once approved. */}
+        {/* TODO: Replace mission paragraph with client-approved wording (open input #2). */}
         <p>
-          We named the firm after the peregrine because the work happens in clean, decisive moves: see the situation, pick the change, deliver it, step back. No circling, no padding, no scope-creep dressed up as discovery.
+          We started this firm to run Salesforce engagements the way the engagements we'd choose to
+          be on actually run — senior consultants who own the work end-to-end, a clear-eyed
+          conversation about what should actually be built, and a living map of the system so the
+          people deciding what comes next can see it.
         </p>
+
+        {/* Wedge-against-large-SIs block. Framed without naming competitors. */}
         <p>
-          That's the shape of the engagements we like to run inside Salesforce orgs — find the part of the system that's actually slowing the team down, fix it, and leave the org in better hands than we found it.
+          The rest of why is reaction. Large doesn't mean responsive — calls go unreturned and weeks
+          slip. Generalist doesn't mean qualified for your specifics — the senior on the pitch is
+          rarely the senior on your account, and rarely the one who's seen your problem before. We
+          built Peregrine Systems for orgs that need the deep, specific consultant they were
+          promised.
         </p>
       </div>
     </div>

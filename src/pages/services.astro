@@ -3,6 +3,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeader from "../components/PageHeader.astro";
 import CTABand from "../components/CTABand.astro";
 
+const cicdTools = [
+  {
+    name: "Gearset",
+    body: "Broad applicability. Default for orgs without specialty deployment needs.",
+  },
+  {
+    name: "Copado",
+    body: "Enterprise-graded CI/CD. For larger orgs with formal release governance.",
+  },
+  {
+    name: "Prodly",
+    body: "Specialized for CPQ deployments — pairs with our CPQ implementation work.",
+  },
+  {
+    name: "Salesforce DX + GitHub Actions",
+    body: "Engineering-depth path. Custom CI workflows when off-the-shelf tools don't fit.",
+  },
+];
+
 const services = [
   {
     id: "implementation",
@@ -13,6 +32,8 @@ const services = [
       "Org design: objects, fields, record types, profiles, permission sets",
       "Data migration and de-duplication",
       "Integrations with your stack (email, finance, marketing, support)",
+      "AgentForce setup and rollout — hands-on experience on the team",
+      "CPQ implementations — an uncommon Salesforce skillset, in-house here",
       "User training and a documented go-live plan",
     ],
     bestFor: "Teams adopting Salesforce for the first time, or replacing a starter CRM.",
@@ -24,7 +45,7 @@ const services = [
     title: "Optimization",
     summary: "Untangle an org that's grown messy. Audit, simplify, automate, and ship the workflow your team actually needs.",
     deliverables: [
-      "Org health audit (technical debt, security, automation)",
+      "Org Health Audit — a structured, written review across architecture, automation, security, and adoption; delivered as a formal artifact, not a verbal walkthrough",
       "Prioritized backlog with effort/impact scoring",
       "Architecture refactor and technical debt remediation",
       "Documentation of the resulting system",
@@ -40,6 +61,7 @@ const services = [
     deliverables: [
       "Backlog triage, prioritization, and biweekly releases",
       "User support, training, and onboarding",
+      "AgentForce ongoing support and tuning",
       "Proactive monitoring of org health and security",
       "Quarterly roadmap review with business stakeholders",
       "Documentation kept current as the org evolves",
@@ -47,6 +69,21 @@ const services = [
     bestFor: "Teams without a full-time Salesforce admin, or supplementing one.",
     timeline: "Monthly retainer, no minimum term",
     pricing: "Tiered retainers from part-time to embedded",
+  },
+  {
+    id: "system-mapping",
+    title: "System Mapping",
+    summary: "An end-to-end visual map of your business process with the underlying Salesforce automation overlaid. One artifact, kept current as the org evolves.",
+    deliverables: [
+      "Process map covering the end-to-end business flow",
+      "Automation overlay (Flows, Apex, integrations) on the same diagram",
+      "Mermaid source committed to your repo or shared workspace",
+      "Change log as the system evolves",
+      "Integration into the Managed Services workflow",
+    ],
+    bestFor: "Teams whose org has outgrown what any one person can hold in their head.",
+    timeline: "Initial map in 2–4 weeks; ongoing as part of Managed Services",
+    pricing: "Pricing on request",
   },
 ];
 ---
@@ -57,7 +94,7 @@ const services = [
 >
   <PageHeader
     eyebrow="Services"
-    title="Three engagement shapes. One way of working."
+    title="Four engagement shapes. One way of working."
     lede="Each engagement starts with a written plan: what we're delivering, what success looks like, what it costs, and when it ends. No open scopes."
   />
 
@@ -105,6 +142,36 @@ const services = [
           </article>
         ))
       }
+    </div>
+  </section>
+
+  {/* CI/CD callout — engineering-practice differentiator. Most Salesforce shops still ship via
+      change sets; we don't. Real version control, automated deployments, audited rollbacks. */}
+  <section class="section bg-[color:var(--color-cream-2)]">
+    <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
+      <div class="grid gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-end">
+        <div>
+          <span class="eyebrow">Engineering practice</span>
+          <h2 class="mt-4 text-3xl sm:text-4xl md:text-5xl">We ship via CI/CD, not change sets.</h2>
+          <span class="rule-divider mt-6"></span>
+        </div>
+        <p class="text-base leading-relaxed text-[color:var(--color-ink-muted)] md:max-w-prose">
+          Most Salesforce shops still deploy through change sets and sandbox refreshes. We don't.
+          Every engagement runs on real version control, automated deployments, and audit-grade
+          rollback — so releases land predictably and you can see who changed what.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-px overflow-hidden rounded border border-[color:var(--color-rule)] bg-[color:var(--color-rule)] sm:grid-cols-2">
+        {
+          cicdTools.map((t) => (
+            <article class="bg-[color:var(--color-cream)] p-6">
+              <h3 class="font-[Fraunces,serif] text-xl text-[color:var(--color-ink)]">{t.name}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">{t.body}</p>
+            </article>
+          ))
+        }
+      </div>
     </div>
   </section>
 

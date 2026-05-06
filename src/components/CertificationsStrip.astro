@@ -1,12 +1,18 @@
 ---
-// Salesforce certifications shown as a tidy grid. Holders are added per-cert when client provides certs/owners.
-const certs = [
-  { name: "Salesforce Administrator", abbr: "ADM" },
-  { name: "Advanced Administrator", abbr: "ADV" },
-  { name: "Platform App Builder", abbr: "PAB" },
-  { name: "Sales Cloud Consultant", abbr: "SCC" },
-  { name: "Service Cloud Consultant", abbr: "SVC" },
-  { name: "Experience Cloud Consultant", abbr: "EXP" },
+// Active Salesforce certifications held across the Peregrine Systems team. Sourced from
+// LinkedIn credential listings; lead consultant currently carries the bulk of the list.
+// Additional team members will add non-overlapping certs as they're confirmed.
+//
+// Source of truth: each cert below maps to a Salesforce Certified credential. Trailblazer
+// profile links land in `href` once the team consolidates them.
+const salesforceCerts = [
+  { abbr: "ADM", name: "Salesforce Certified Administrator" },
+  { abbr: "PAB", name: "Platform App Builder" },
+  { abbr: "BAN", name: "Salesforce Certified Business Analyst" },
+  { abbr: "UXD", name: "User Experience Designer" },
+  { abbr: "STR", name: "Strategy Designer" },
+  { abbr: "AIA", name: "AI Associate" },
+  { abbr: "AGB", name: "Agentblazer Champion" },
 ];
 ---
 
@@ -14,13 +20,13 @@ const certs = [
   <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
     <div class="text-center">
       <span class="eyebrow">Certified expertise</span>
-      <h2 class="mt-4 text-3xl sm:text-4xl">Salesforce certifications held by the team</h2>
+      <h2 class="mt-4 text-3xl sm:text-4xl">Active Salesforce certifications.</h2>
       <span class="rule-divider rule-divider-center mt-6"></span>
     </div>
 
-    <ul class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+    <ul class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
       {
-        certs.map((c) => (
+        salesforceCerts.map((c) => (
           <li class="flex flex-col items-center gap-3 rounded border border-[color:var(--color-rule)] bg-[color:var(--color-cream)] p-5 text-center transition-colors hover:border-[color:var(--color-gold)]">
             <div class="grid h-14 w-14 place-items-center rounded-full border border-[color:var(--color-gold)]/40 bg-[color:var(--color-gold-soft)]/40 font-[Fraunces,serif] text-sm tracking-wider text-[color:var(--color-gold)]">
               {c.abbr}
@@ -30,9 +36,13 @@ const certs = [
         ))
       }
     </ul>
-    <p class="mt-6 text-center text-xs text-[color:var(--color-ink-muted)]">
-      <!-- TODO: Replace placeholder badges with official Salesforce credential SVGs and link each to Trailblazer profile. -->
-      Replace placeholders with official Salesforce credential badges once team certifications are confirmed.
+
+    <p class="mx-auto mt-10 max-w-3xl text-center text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
+      Plus 19 additional credentials across the Salesforce ecosystem (Conga, ServiceMax, DocuSign)
+      and process disciplines (Lean Six Sigma, PMI methodologies, design thinking).
     </p>
+
+    {/* TODO: Add Trailblazer profile links per cert once the team consolidates URLs.
+        TODO: Update counts and roster as additional team members add non-overlapping certs. */}
   </div>
 </section>
