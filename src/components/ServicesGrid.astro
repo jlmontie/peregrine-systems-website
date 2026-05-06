@@ -1,5 +1,5 @@
 ---
-import Mountains from "./Mountains.astro";
+import Brandmark from "./Brandmark.astro";
 
 interface Service {
   title: string;
@@ -22,20 +22,14 @@ const defaultServices: Service[] = [
   {
     title: "Optimization",
     description: "Untangle an org that's grown messy. Audit, simplify, automate, and ship the workflow your team actually needs.",
-    bullets: ["Org health audit", "Process automation (Flow)", "Reports & dashboards"],
+    bullets: ["Org health audit", "Technical debt remediation", "Architecture refactor"],
     href: "/services#optimization",
   },
   {
-    title: "Admin-as-a-Service",
-    description: "An on-call senior admin without the headcount. Predictable monthly support that scales with the business.",
+    title: "Managed Services",
+    description: "An on-call senior team without the headcount. Predictable monthly support that scales with the business.",
     bullets: ["Backlog triage & releases", "User support & training", "Quarterly roadmap"],
     href: "/services#managed",
-  },
-  {
-    title: "Training & Enablement",
-    description: "Equip your team to own Salesforce day-to-day. Role-based training, runbooks, and admin handoff.",
-    bullets: ["End-user workshops", "Admin handoff & runbooks", "Office hours"],
-    href: "/services#training",
   },
 ];
 
@@ -51,7 +45,7 @@ const { services = defaultServices } = Astro.props;
         <span class="rule-divider mt-6"></span>
       </div>
       <p class="text-base leading-relaxed text-[color:var(--color-ink-muted)] md:max-w-prose">
-        We work with growing teams that have outgrown spreadsheets and starter CRMs — or inherited a Salesforce org that's stopped working for them. Four engagement shapes, one north star: a CRM your team actually uses.
+        We work with Salesforce teams from small to enterprise — fresh orgs, inherited orgs, and orgs that have stopped working the way the business does. Three engagement shapes. One outcome: a CRM your team actually uses.
       </p>
     </div>
 
@@ -64,7 +58,7 @@ const { services = defaultServices } = Astro.props;
           >
             <div class="flex items-start justify-between gap-4">
               <h3 class="text-2xl">{s.title}</h3>
-              <Mountains decorative class="h-[18px] w-auto shrink-0 opacity-70 transition-transform group-hover:scale-105" />
+              <Brandmark decorative class="h-[18px] w-auto shrink-0 opacity-70 transition-transform group-hover:scale-105" />
             </div>
             <p class="mt-4 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">{s.description}</p>
             <ul class="mt-5 space-y-1.5 text-sm text-[color:var(--color-ink-2)]">

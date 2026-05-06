@@ -1,5 +1,5 @@
 ---
-import Mountains from "./Mountains.astro";
+import Brandmark from "./Brandmark.astro";
 interface Props {
   href?: string;
   size?: "sm" | "md";
@@ -12,12 +12,12 @@ const wordClass =
     : "text-[1.25rem] sm:text-[1.35rem]";
 ---
 
-<a href={href} class="inline-flex items-center gap-3 group" aria-label="Northstrider Consulting — home">
-  <Mountains decorative class={markClass} />
+<a href={href} class="inline-flex items-center gap-3 group" aria-label="Peregrine Systems — home">
+  <Brandmark decorative class={markClass} />
   <span
     class={`font-[Fraunces,serif] ${wordClass} tracking-tight text-[color:var(--color-ink)] leading-none`}
     style="font-variation-settings: 'opsz' 24, 'SOFT' 30;"
   >
-    <span class="font-medium">North</span><span class="font-normal italic">strider</span>
+    <span class="font-medium">Peregrine</span> <span class="font-normal italic">Systems</span>
   </span>
 </a>

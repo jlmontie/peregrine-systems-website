@@ -33,3 +33,6 @@ Thumbs.db
 *.tsbuildinfo
 .eslintcache
 coverage/
+
+# Temp files
+*.tmp

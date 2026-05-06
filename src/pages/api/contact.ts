@@ -59,7 +59,7 @@ export const POST: APIRoute = async ({ request, url }) => {
 
   const apiKey = import.meta.env.RESEND_API_KEY;
   const toAddress = import.meta.env.CONTACT_TO_EMAIL ?? "team@northstriderconsulting.com";
-  const fromAddress = import.meta.env.CONTACT_FROM_EMAIL ?? "Northstrider Contact <onboarding@resend.dev>";
+  const fromAddress = import.meta.env.CONTACT_FROM_EMAIL ?? "Peregrine Systems Contact <onboarding@resend.dev>";
 
   // Dev mode without a key: log to console, still report success so the form is testable.
   if (!apiKey) {
@@ -89,7 +89,7 @@ export const POST: APIRoute = async ({ request, url }) => {
 
   const html = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #0E1726; max-width: 560px;">
-      <h2 style="font-family: Georgia, serif; color: #B8923A; margin: 0 0 16px;">New inquiry — Northstrider</h2>
+      <h2 style="font-family: Georgia, serif; color: #B8923A; margin: 0 0 16px;">New inquiry — Peregrine Systems</h2>
       <p style="margin: 0 0 8px;"><strong>From:</strong> ${escapeHtml(input.name)} &lt;${escapeHtml(input.email)}&gt;</p>
       ${input.company ? `<p style="margin: 0 0 8px;"><strong>Company:</strong> ${escapeHtml(input.company)}</p>` : ""}
       ${input.role ? `<p style="margin: 0 0 8px;"><strong>Role:</strong> ${escapeHtml(input.role)}</p>` : ""}

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Northstrider palette — light cream/ink/gold */
+  /* Brand palette — light cream/ink/gold */
   --color-cream: #FBFAF5;
   --color-cream-2: #F5F0E3;
   --color-paper: #F0E9D6;

@@ -1,6 +1,12 @@
 ---
 import Button from "./Button.astro";
-import Mountains from "./Mountains.astro";
+import Brandmark from "./Brandmark.astro";
+
+// Decorative motif behind the brandmark. Swap candidates by changing this string:
+//   "/chevrons.svg"   — sparse, varied ">" field; reads as forward motion
+//   "/slipstream.svg" — hairline streaks with slight downward tilt; reads as wind/stoop
+//   "/ridges.svg"     — original mountain silhouette (legacy)
+const motifSrc = "/slipstream.svg";
 ---
 
 <section class="relative overflow-hidden">
@@ -18,7 +24,7 @@ import Mountains from "./Mountains.astro";
         <span class="rule-divider mt-8"></span>
 
         <p class="mt-8 max-w-xl text-lg leading-relaxed text-[color:var(--color-ink-muted)]">
-          We help small and mid-sized teams stand up, untangle, and run Salesforce — so the CRM does the work, your people stop fighting it, and the data you trust drives the next decision.
+          We help Salesforce teams from small to enterprise stand up, untangle, and run their org — so the CRM does the work, your people stop fighting it, and the data you trust drives the next decision.
         </p>
 
         <div class="mt-10 flex flex-wrap items-center gap-4">
@@ -54,17 +60,17 @@ import Mountains from "./Mountains.astro";
             aria-hidden="true"
           />
           <img
-            src="/ridges.svg"
+            src={motifSrc}
             alt=""
             width={1200}
             height={240}
-            class="pointer-events-none absolute inset-x-[-8%] bottom-0 z-[1] h-[42%] min-h-[140px] w-[116%] max-w-none select-none object-cover object-bottom opacity-[0.85]"
+            class="pointer-events-none absolute inset-x-[-8%] bottom-0 z-[1] h-[80%] min-h-[140px] w-[116%] max-w-none select-none object-cover object-bottom opacity-[0.99]"
             aria-hidden="true"
             loading="eager"
             decoding="async"
           />
           <div class="relative z-10 mx-auto flex w-full max-w-lg items-center justify-center px-6 py-16">
-            <Mountains decorative class="w-full max-w-[min(100%,420px)] h-auto sm:max-w-[480px]" />
+            <Brandmark decorative class="w-full max-w-[min(100%,420px)] h-auto sm:max-w-[480px]" />
           </div>
         </div>
       </div>

@@ -1,10 +1,16 @@
-# Northstrider Consulting — Buildout Plan
+# Peregrine Systems — Buildout Plan
 
-> **Goal:** Ship a generic-but-credible site in 1–2 weeks. Preserve every structural slot
-> we'll need to expand into a positioned site once the client returns specific content.
+> **Goal:** Ship a positioned site reflecting confirmed client direction. Skeleton phase
+> complete and rebranded (formerly Northstrider, renamed 2026-05-06); copy and structural
+> work now drive toward launch.
 >
-> **Status:** Skeleton built (Astro + Tailwind v4 + MDX + Vercel adapter). Light theme, north
-> star branding, all primary pages and a working `/api/contact` endpoint backed by Resend.
+> **Status:** Astro + Tailwind v4 + MDX + Vercel adapter. Light theme, peregrine branding,
+> all primary pages and a working `/api/contact` endpoint backed by Resend.
+>
+> **Operating plan:** Sections 1–6 below capture the original generic-launch plan from
+> the skeleton phase. **Section 7 captures client direction from the 2026-05-06
+> conversation and supersedes earlier sections where they conflict** — notably audience
+> widening, service taxonomy, and the addition of System Mapping as a flagship offering.
 
 ---
 
@@ -94,14 +100,14 @@ Reads as intentional rather than placeholder-laden.
 ### Phase 2 — Productionize (concurrent with Phase 1)
 
 - [ ] **Domain**
-  - [ ] Point `northstriderconsulting.com` and `www.` at Vercel (A/CNAME records per Vercel docs)
+  - [ ] Point `[brand-domain.tld]` and `www.` at Vercel (A/CNAME records per Vercel docs) — domain TBD between `peregrinesystems.io` and `peregrinesys.com`
   - [ ] Confirm `https://` enforced and www → apex (or apex → www) redirect set in Vercel
   - [ ] Verify production deployment loads at the real domain
 - [ ] **Email (Resend)**
-  - [ ] Add `northstriderconsulting.com` as a domain in Resend
+  - [ ] Add `[brand-domain.tld]` as a domain in Resend
   - [ ] Add the SPF/DKIM/DMARC DNS records the Resend dashboard provides
   - [ ] Wait for verification (usually <1 hour after DNS propagates)
-  - [ ] Set `CONTACT_FROM_EMAIL` env var to `Northstrider <hello@northstriderconsulting.com>`
+  - [ ] Set `CONTACT_FROM_EMAIL` env var to `Peregrine Systems <hello@[brand-domain.tld]>`
         (or whatever sender alias they want)
 - [ ] **Vercel env vars** (Production + Preview)
   - [ ] `RESEND_API_KEY`
@@ -124,8 +130,8 @@ Reads as intentional rather than placeholder-laden.
   - [ ] Replace `og-image.png` placeholder reference with a real OG image (1200x630)
   - [ ] Verify `<title>` and `<meta description>` per page render with the correct text
 - [ ] **Favicon / brand**
-  - [ ] Confirm the current SVG north-star favicon is acceptable as a placeholder, OR ask
-        client for their preferred mark
+  - [x] Client provided peregrine logo + favicon (2026-05-06) — installed at
+        `public/logo.svg` and `public/favicon.svg`
 
 ### Phase 3 — Expansion (post-launch, as client returns content)
 
@@ -160,8 +166,8 @@ These block specific Phase 1 / 2 / 3 edits. Asked in priority order.
 4. Do you have written permission from any prior clients to use their logo / write a case
    study about the engagement?
 5. Founder/principal name + role + headshot + 2-paragraph bio + LinkedIn URL
-6. Is `team@northstriderconsulting.com` the correct destination for contact-form
-   submissions? Or a different inbox/alias?
+6. Is `hello@[brand-domain.tld]` the correct destination for contact-form
+   submissions? Or a different inbox/alias? (Domain itself still TBD.)
 7. Is there a domain registrar/DNS account we have access to, or do we need to send the
    client DNS records to add themselves?
 8. Are they OK with cookieless analytics (Plausible, ~$9/mo) or do they want GA4 (free)?
@@ -207,3 +213,146 @@ After launch the practical maintenance shape is:
 If the client wants to edit copy themselves (without touching code), Phase 3 could include
 adding a CMS layer (Sanity, Contentlayer, or just MDX with a hosted Git editor like
 TinaCMS). Not in scope for the 1–2 week launch.
+
+---
+
+## 7. Client direction — May 6 conversation
+
+Captured from a working session with the client on 2026-05-06. These items supersede the
+generic-launch assumptions in Sections 1–3 where they conflict — notably audience widening,
+service taxonomy, the removal of the case-studies surface, and the addition of System
+Mapping as a flagship offering.
+
+### Strategic shifts
+
+- **Audience.** Site speaks to teams of every size — small to enterprise. The original
+  "growing teams" / "small and mid-sized teams" framing is retired across all copy.
+- **Two public-facing pillars** for what the firm sells, used as section eyebrows and
+  headers across the site:
+  - **True Consulting** — reduce rework by challenging requirements and building
+    scalable, expandable solutions. Anti-pattern: literal implementation of the
+    customer's first ask without questioning whether it's the right ask.
+  - **Usable Knowledge** — visual end-to-end maps of the business process with the
+    underlying automation overlaid. Standard documentation is siloed; one flow chart
+    that combines process and automation lets stakeholders see the whole picture and
+    make decisions on it.
+- **Wedge against large SIs.** "Large doesn't mean responsive; generalist doesn't mean
+  qualified for your specifics." Calls don't get returned, and big-firm seniors rarely
+  know the answer to your specific question. Worth a copy block on About or homepage,
+  framed without naming competitors.
+
+### Phase A — Copy corrections (small, immediate edits) — *done 2026-05-06*
+
+- [x] **Audience phrasing** — "small and mid-sized teams" / "growing teams" replaced
+      with "teams from small to enterprise" across `Hero.astro`, `BaseLayout.astro`,
+      `Footer.astro`, `about.astro`, `index.astro`, and the `ServicesGrid` intro.
+      Default phrase pending client sign-off (open input #1).
+- [x] **Rename service** — `Admin-as-a-Service` → `Managed Services` in
+      `ServicesGrid.astro`, `services.astro`, `Footer.astro` Services nav,
+      `BaseLayout.astro` default title, and `services.astro` page description.
+      `#managed` anchor preserved.
+- [x] **Drop bullets** — `ServicesGrid` Optimization bullets are now
+      "Org health audit / Technical debt remediation / Architecture refactor".
+      `services.astro` Optimization deliverables trimmed: dropped Flow line, dropped
+      Reports refresh line, removed "reports" from the audit parenthetical, added
+      "Architecture refactor and technical debt remediation" to round out.
+- [x] **Removed Salesforce Partner badge slot** from `Footer.astro` (placeholder
+      and TODO comment both deleted).
+- [ ] **"Trusted by" → "Prior work with"** — deferred to Phase D when LogoStrip
+      returns to the homepage. Component still hidden in v1.
+- [x] **Dropped Training & Enablement** — tile removed from `ServicesGrid` defaults,
+      section removed from `services.astro`, link removed from `Footer.astro` Services
+      nav, "training" removed from `BaseLayout` and `services.astro` descriptions.
+      `services.astro` PageHeader updated from "Four engagement shapes" to "Three".
+- [x] **Removed the Case Studies surface entirely:**
+  - [x] Deleted `src/pages/case-studies/index.astro`
+  - [x] Deleted `src/pages/case-studies/[...slug].astro`
+  - [x] Deleted `src/content/case-studies/sample-placeholder.mdx`
+  - [x] Deleted `src/content.config.ts` (no remaining collections; `astro:content`
+        `z` re-export still works for the contact-form route)
+  - [x] Deleted `src/components/CaseStudyTease.astro`
+  - [x] "Case Studies" removed from `Header.astro` nav and `Footer.astro` Company nav
+  - [x] `index.astro` no longer imports or renders `<CaseStudyTease />`
+- [x] **Kept "Outcomes over hours"** principle in `PrinciplesBand.astro` — confirmed
+      present, untouched.
+
+Build passes; 5 prerendered routes remain (`/`, `/about`, `/services`, `/industries`,
+`/contact`) plus the `/api/contact` serverless function.
+
+### Phase B — Mission & positioning rewrite (medium edits)
+
+Restructure About around the client-provided What/How/Why. Surface the two pillars on
+the homepage.
+
+- [ ] **About page** — restructure into three blocks (What we do / How we do it /
+      Why we do it) anchored on the client's mission statement, leading with True
+      Consulting and Usable Knowledge as the two named pillars.
+- [ ] **Homepage pillars callout** — short band introducing True Consulting and
+      Usable Knowledge between `ServicesGrid` and CTA. Eyebrow + heading + 2–3
+      sentences each, each linking to its respective treatment (About for True
+      Consulting, `/system-mapping` for Usable Knowledge).
+- [ ] **Wedge-against-large-SIs block** — short copy block on About (or homepage),
+      framed without naming competitors. Sets up the size-of-firm question on our
+      terms instead of the prospect's.
+
+### Phase C — System Mapping treatment (the major unique value-add)
+
+Three surfaces, per client's emphasis. If the homepage feels heavy after all three
+land, the homepage callout is the first thing to scale back — the dedicated page and
+service tile carry the offering on their own.
+
+- [ ] **Service tile** in `ServicesGrid.astro` — fourth tile alongside Implementation,
+      Optimization, Managed Services. Final four tiles tell a story: build new orgs
+      (Implementation) · fix existing orgs (Optimization) · run them with you
+      (Managed Services) · make them legible the whole time (System Mapping).
+- [ ] **Dedicated page** at `/system-mapping`. Sections:
+  - *What it is* — visual end-to-end business-process map with automation overlay.
+  - *Why it matters* — interception points for new features (grooming tickets),
+    prevents the "we asked for the wrong thing" failure mode, gives developers a
+    place to suggest improvements proactively.
+  - *How we deliver it* — Mermaid / flow-chart artifacts maintained alongside the
+    org as it evolves; not a one-time deliverable, an ongoing source of truth.
+  - *What you get* — artifact list (the diagram itself, the change log, integration
+    with our Managed Services workflow).
+- [ ] **Homepage callout** — short band linking to the dedicated page. Pairs
+      naturally with the True Consulting / Usable Knowledge pillar block in Phase B.
+
+### Phase D — Tech surface + credibility (data-dependent)
+
+- [ ] **AgentForce** — surface in Implementation and Managed Services bullets;
+      employee with current hands-on experience.
+- [ ] **CPQ** — surface in Implementation; explicit "uncommon skillset" framing.
+- [ ] **CI/CD** — short callout (paragraph or sub-section) on Services or System
+      Mapping. CI/CD is a meaningful differentiator in this space — most Salesforce
+      shops still ship via change sets — so it earns real estate, not a footnote.
+      Name **Gearset** (broad applicability), **Copado** (enterprise-graded),
+      **Prodly** (CPQ deployments — client confirmed this is in scope), and
+      **Salesforce DX + GitHub Actions** (engineering depth, ties to GitHub on the
+      "prior work with" line).
+- [ ] **Org Health Audit framing** — keep mentioning, treated as a formal,
+      semi-quantitative deliverable rather than ad-hoc activity. Capability the team
+      is building toward; copy can be aspirational without overclaiming.
+- [ ] **LogoStrip — names-only revival.** Re-import on homepage. Replace the
+      placeholder text wordmarks with `Prior work with teams at GitHub, Komatsu,
+      Splunk, [more]`. **No logo artwork** — written permission is not in hand;
+      names-in-prose is the legally-clean treatment.
+- [ ] **CertificationsStrip — needs data.** Goal copy: "40+ Salesforce certifications
+      across the team." Surface lead names on About once confirmed (e.g.,
+      Karlton Knight, PMP). Awaiting employee list from client → LinkedIn cert scrape.
+
+### Open inputs needed from client
+
+These block specific Phase B/C/D execution.
+
+1. Confirmed audience copy line — "teams of every size" or alternative phrasing the
+   client prefers. (Affects Hero, About, Footer, BaseLayout description.)
+2. Mission-statement copy proofed by client — they wrote a draft; we'll tighten and
+   ship, but they should sign off on the final wording before it lands publicly.
+3. **System Mapping example artifact** — a real or sanitized Mermaid / flow chart
+   we can render on the dedicated `/system-mapping` page. Without one, the page is
+   abstract; with one, it sells the offering on its own.
+4. **Employee list** — for the LinkedIn cert scrape and lead-name surfacing on About.
+5. Confirmation that **GitHub, Komatsu, Splunk** are accurate "prior work with"
+   relationships (firm- or employee-level), and any others to add.
+6. Domain decision — `peregrinesystems.io` vs `peregrinesys.com`. Gates Phase 2
+   DNS + Resend domain verification.
