@@ -5,12 +5,18 @@
 > work now drive toward launch.
 >
 > **Status:** Astro + Tailwind v4 + MDX + Vercel adapter. Light theme, peregrine branding,
-> all primary pages and a working `/api/contact` endpoint backed by Resend.
+> all primary pages and a working `/api/contact` endpoint backed by Resend. **Phases A–D
+> have landed** (audience widening, mission/positioning rewrite around the two pillars,
+> System Mapping treatment across three surfaces, tech surface + credibility revival).
+> Six prerendered routes: `/`, `/about`, `/services`, `/system-mapping`, `/industries`,
+> `/contact`, plus the `/api/contact` serverless function.
 >
 > **Operating plan:** Sections 1–6 below capture the original generic-launch plan from
 > the skeleton phase. **Section 7 captures client direction from the 2026-05-06
 > conversation and supersedes earlier sections where they conflict** — notably audience
 > widening, service taxonomy, and the addition of System Mapping as a flagship offering.
+> Outstanding work consolidates in Section 7's Phase 2 (productionize: domain, email,
+> analytics, legal, SEO) and the Open Inputs list at the end of Section 7.
 
 ---
 
@@ -51,9 +57,10 @@ That's worse than blandness — it's a credibility liability the moment a real p
 ### Out (until client returns content)
 
 - **Industries page** — hidden from nav; file remains in `src/pages/industries.astro`
-- **Sample case study** — kept in `src/content/case-studies/` but `draft: true` so it does
-  not render in the index or the homepage tease (empty state shows instead)
-- **Founder photo + bio block** on About — replaced with a neutral "about the team" block
+- **Case studies surface** — removed entirely in Phase A (no index, no detail route, no
+  content collection). When real engagements are written, Phase 3 brings the surface back.
+- **Founder photo + bio block** — removed entirely in Phase B; About is now structured
+  around What we do / How we do it / Why we do it. A team page can land later if needed.
 - **Hero stat tiles** (10+ years, 6+ certs, --) — removed; will return once we have real numbers
 - **Specific testimonial pull-quotes** — none; we won't fake them
 
@@ -87,15 +94,17 @@ Edits inside the existing components/pages. No new architecture.
   - [ ] Drop the "Salesforce Partner badge — pending" indicator if client prefers no
         commitment-signal placeholder
 
-### Phase 1 — Resolved: LogoStrip and CertificationsStrip hidden for v1
+### Phase 1 — Superseded: LogoStrip and CertificationsStrip back on the homepage
 
-Decision: **Option 1.** Both sections removed from the homepage; CertificationsStrip
-removed from the About page. Component files remain at
-`src/components/LogoStrip.astro` and `src/components/CertificationsStrip.astro` for
-re-use when real client logos and confirmed certs arrive (see Phase 3).
+The original Phase 1 decision hid both strips for v1. **Phase D revived both with
+data-aware treatments:** LogoStrip is now a names-in-prose treatment ("Prior work
+with — Teams at GitHub · Komatsu · Splunk and others"), and CertificationsStrip is
+populated from the lead consultant's LinkedIn credential listing (7 Salesforce certs
+shown as badges, plus a tail line accounting for 19 adjacent credentials). Both are
+back on the homepage; CertificationsStrip is also on About.
 
-Result: homepage compresses to **Hero → Services → Case Study (empty state) → CTA**.
-Reads as intentional rather than placeholder-laden.
+Current homepage flow: **Hero → LogoStrip → Services → Pillars → SystemMapping →
+Principles → Certifications → CTA**.
 
 ### Phase 2 — Productionize (concurrent with Phase 1)
 
@@ -137,15 +146,20 @@ Reads as intentional rather than placeholder-laden.
 
 Each item below is a 5–60 minute edit because the slot already exists.
 
-- [ ] **Salesforce Partner status** → drop badge image into footer, replace "pending" tag
-- [ ] **Real client logos (3–5)** → re-import `LogoStrip` in `src/pages/index.astro`,
-      replace text placeholders inside the component with logo SVGs
-- [ ] **Real Salesforce certifications** → re-import `CertificationsStrip` in
-      `src/pages/index.astro` and `src/pages/about.astro`; swap placeholder badges in
-      the component for official credential SVGs; link each to Trailblazer profile
+- [ ] **Salesforce Partner status** → drop badge image into footer (badge slot was
+      removed in Phase A; re-add when partner confirmation lands)
+- [ ] **Logo artwork upgrade** → swap LogoStrip's names-in-prose treatment for actual
+      logo SVGs once written client permission is in hand for each name
+- [ ] **Trailblazer profile links per cert** → link each `CertificationsStrip` badge to
+      the team member's Trailblazer profile once URLs are consolidated
+- [ ] **Cert roster expansion** → add non-overlapping certs from additional team members
+      as confirmed; bump the "19 additional credentials" tail line accordingly
 - [ ] **AppExchange listing link** → drop into footer + About page
-- [ ] **First case study** → write MDX in `src/content/case-studies/`, set `draft: false`
-- [ ] **Founder photo + bio** → un-hide About founder block, replace `[Founder Name]` placeholders
+- [ ] **Case studies surface** → if/when written client engagements with permission to
+      tell the story arrive, rebuild the surface (index route, detail route, content
+      collection) from scratch — was deleted entirely in Phase A
+- [ ] **Team / lead names on About** → BUILDOUT Section 7 open input #4. When the
+      employee list arrives, surface lead names (e.g. "Karlton Knight, PMP") on About.
 - [ ] **Vertical decision** → re-add Industries to nav once 1–2 verticals chosen; prune the
       industries list to only those
 - [ ] **Calendly / Cal.com embed** → replace placeholder link in Contact sidebar
@@ -158,23 +172,31 @@ Each item below is a 5–60 minute edit because the slot already exists.
 
 ## 4. Open questions for the client
 
-These block specific Phase 1 / 2 / 3 edits. Asked in priority order.
+These gate specific Phase 1 / 2 / 3 edits. Phase A–D resolved several; remaining items
+below. The Section 7 "Open inputs needed" list at the bottom is the priority queue
+for the current client direction — these are the legacy-doc items that haven't migrated
+there yet.
 
 1. Are you a registered Salesforce Partner? (gates partner badge slot)
-2. Which Salesforce certifications does the team hold? (gates cert badges)
-3. Do you have an AppExchange consultant listing? Link?
-4. Do you have written permission from any prior clients to use their logo / write a case
-   study about the engagement?
-5. Founder/principal name + role + headshot + 2-paragraph bio + LinkedIn URL
-6. Email aliases — code currently defaults destination to `team@peregrinesys.com`
+2. Do you have an AppExchange consultant listing? Link?
+3. Do you have written permission from any prior clients to use their logo / write a case
+   study about the engagement? (Phase D shipped names-only on LogoStrip; logo artwork
+   upgrade still gated on this.)
+4. Email aliases — code currently defaults destination to `team@peregrinesys.com`
    (`CONTACT_TO_EMAIL`) and sender to `Peregrine Systems <hello@peregrinesys.com>`
    (`CONTACT_FROM_EMAIL`). Confirm both, or specify alternates.
-7. Is there a domain registrar/DNS account we have access to, or do we need to send the
+5. Is there a domain registrar/DNS account we have access to, or do we need to send the
    client DNS records to add themselves?
-8. Are they OK with cookieless analytics (Plausible, ~$9/mo) or do they want GA4 (free)?
-9. Privacy policy: do they have an existing one we should reuse, or write a minimal one?
-10. Vertical / industry focus — even a tentative answer here unlocks much stronger copy
-    in Phase 3
+6. Are they OK with cookieless analytics (Plausible, ~$9/mo) or do they want GA4 (free)?
+7. Privacy policy: do they have an existing one we should reuse, or write a minimal one?
+8. Vertical / industry focus — even a tentative answer here unlocks much stronger copy
+   in Phase 3.
+
+*Resolved by Phase D:* "Which Salesforce certifications does the team hold?" — populated
+from the lead consultant's LinkedIn data; expansion is a roster question (Section 7
+open input #4), not a new ask. *Made moot by Phase B:* "Founder/principal name + role
++ headshot + bio" — the founder block was removed and About was restructured around
+What/How/Why; if a team page lands later, the question returns then.
 
 ---
 
@@ -205,8 +227,15 @@ After launch the practical maintenance shape is:
 
 - **Editing copy:** edit `.astro` files in `src/components/` and `src/pages/`, push to GitHub,
   Vercel auto-deploys.
-- **Adding a case study:** drop a new `.mdx` file into `src/content/case-studies/`. The
-  homepage tease and case studies index pick it up automatically.
+- **Updating the cert roster:** add entries to the `salesforceCerts` array in
+  `src/components/CertificationsStrip.astro` and bump the "19 additional credentials"
+  tail line. Trailblazer profile URLs go on the cert objects once consolidated.
+- **Updating the LogoStrip names list:** add entries to the `teams` array in
+  `src/components/LogoStrip.astro`. Confirm permission first — names-only treatment is
+  legally cleaner than logo artwork without explicit written approval.
+- **Updating the System Mapping example diagram:** replace the `exampleDiagram` Mermaid
+  source in `src/pages/system-mapping.astro` with a sanitized real artifact when one is
+  available (Section 7 open input #3).
 - **Toggling Industries page back on:** add the entry back to the `nav` array in
   `src/components/Header.astro`.
 - **Rotating Resend keys:** update `RESEND_API_KEY` in Vercel env vars and redeploy.
