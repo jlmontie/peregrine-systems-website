@@ -8,16 +8,15 @@ const { href = "/", size = "md" } = Astro.props;
 const markClass = size === "sm" ? "h-[26px] w-auto shrink-0" : "h-9 w-auto shrink-0";
 const wordClass =
   size === "sm"
-    ? "text-[1.15rem]"
-    : "text-[1.25rem] sm:text-[1.35rem]";
+    ? "text-[0.85rem]"
+    : "text-[0.95rem] sm:text-[1.05rem]";
 ---
 
 <a href={href} class="inline-flex items-center gap-3 group" aria-label="Peregrine Systems — home">
   <Brandmark decorative class={markClass} />
   <span
-    class={`font-[Fraunces,serif] ${wordClass} tracking-tight text-[color:var(--color-ink)] leading-none`}
-    style="font-variation-settings: 'opsz' 24, 'SOFT' 30;"
+    class={`font-[Michroma,sans-serif] ${wordClass} tracking-[0.02em] text-[color:var(--color-ink)] leading-none`}
   >
-    <span class="font-medium">Peregrine</span> <span class="font-normal italic">Systems</span>
+    <span>Peregrine</span> <span class="text-[color:var(--color-gold)]">Systems</span>
   </span>
 </a>

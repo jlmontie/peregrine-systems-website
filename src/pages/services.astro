@@ -104,7 +104,7 @@ const services = [
         services.map((s, i) => (
           <article id={s.id} class="scroll-mt-24">
             <div class="flex items-baseline gap-6">
-              <span class="font-[Fraunces,serif] text-xs tracking-[0.3em] text-[color:var(--color-gold)]">0{i + 1}</span>
+              <span class="font-[Michroma,sans-serif] text-xs tracking-[0.3em] text-[color:var(--color-gold)]">0{i + 1}</span>
               <h2 class="text-3xl sm:text-4xl">{s.title}</h2>
             </div>
             <p class="mt-5 max-w-3xl text-lg leading-relaxed text-[color:var(--color-ink-muted)]">{s.summary}</p>
@@ -166,7 +166,7 @@ const services = [
         {
           cicdTools.map((t) => (
             <article class="bg-[color:var(--color-cream)] p-6">
-              <h3 class="font-[Fraunces,serif] text-xl text-[color:var(--color-ink)]">{t.name}</h3>
+              <h3 class="font-[Michroma,sans-serif] text-xl text-[color:var(--color-ink)]">{t.name}</h3>
               <p class="mt-3 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">{t.body}</p>
             </article>
           ))
