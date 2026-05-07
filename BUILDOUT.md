@@ -270,7 +270,7 @@ Mapping as a flagship offering.
   - **True Consulting** — reduce rework by challenging requirements and building
     scalable, expandable solutions. Anti-pattern: literal implementation of the
     customer's first ask without questioning whether it's the right ask.
-  - **Usable Knowledge** — visual end-to-end maps of the business process with the
+  - **System Clarity** — visual end-to-end maps of the business process with the
     underlying automation overlaid. Standard documentation is siloed; one flow chart
     that combines process and automation lets stakeholders see the whole picture and
     make decisions on it.
@@ -323,7 +323,7 @@ Restructure About around the client-provided What/How/Why. Surface the two pilla
 the homepage.
 
 - [x] **About page** — restructured into three blocks (What we do / How we do it /
-      Why we do it). What-we-do leads with True Consulting and Usable Knowledge as
+      Why we do it). What-we-do leads with True Consulting and System Clarity as
       named pillars; How-we-do-it carries senior-led / configure-first / outcomes
       principles inline; Why-we-do-it holds the mission paragraph (TODO marker for
       client sign-off, open input #2) and the wedge block. Founder block and
@@ -331,7 +331,7 @@ the homepage.
 - [x] **Homepage pillars callout** — new `PillarsBand.astro` component inserted
       between `ServicesGrid` and `PrinciplesBand` on the homepage. Eyebrow "How
       we're different" + heading "Two pillars" + two-column hairline-divider grid;
-      True Consulting links to `/about`, Usable Knowledge links to `/system-mapping`
+      True Consulting links to `/about`, System Clarity links to `/system-mapping`
       (page does not yet exist — Phase C).
 - [x] **Wedge-against-large-SIs block** — landed inside the About "Why we do it"
       section as the closing paragraph. No competitor named; framed as the size /
@@ -346,13 +346,13 @@ service tile carry the offering on their own.
 
 - [x] **Service tile** in `ServicesGrid.astro` — fourth tile added. Grid now lays
       out 2×2 on desktop. Intro line updated from "Three engagement shapes" to
-      "Four shapes the work takes: build, fix, run, and map." Tile copy and bullets
+      "Our work typically falls into four areas: build, optimize, support, and map." Tile copy and bullets
       frame System Mapping as the legibility / artifact offering.
 - [x] **Dedicated page** at `/system-mapping` (`src/pages/system-mapping.astro`).
       Four sections in order: *What it is* (narrative + illustrative Mermaid
       diagram, generic B2B Lead → Fulfillment flow with automation overlays);
       *Why it matters* (3-card grid: interception points, anti-wrong-ask, proactive
-      dev input); *How we deliver it* (2-paragraph narrative on living artifact +
+      dev input); *How we deliver it* (2-paragraph narrative on living system map +
       Managed Services integration); *What you get* (4-item deliverables list).
       Mermaid renders client-side via jsdelivr ESM CDN, themed to peregrine palette.
       Diagram block labeled "Illustrative example" — TODO marker points at open
@@ -360,8 +360,8 @@ service tile carry the offering on their own.
 - [x] **Homepage callout** — new `SystemMappingBand.astro` slotted between
       `PillarsBand` and `PrinciplesBand`. Asymmetric layout: text + CTA on the left,
       decorative three-layer card stack on the right (suggesting overlay /
-      legibility, not a literal diagram). Reads as the close-up zoom on the Usable
-      Knowledge pillar without duplicating the diagram from `/system-mapping`.
+      legibility, not a literal diagram). Reads as the close-up zoom on the System Clarity 
+      pillar without duplicating the diagram from `/system-mapping`.
 - [x] **Footer Services nav** — System Mapping link added under
       `/services#implementation` / `#optimization` / `#managed`.
 

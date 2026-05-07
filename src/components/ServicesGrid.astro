@@ -15,25 +15,25 @@ interface Props {
 const defaultServices: Service[] = [
   {
     title: "Implementation",
-    description: "Stand up Salesforce the right way — from greenfield org to first close — without disrupting the business in flight.",
+    description: "Build Salesforce correctly from the start — from initial architecture to go-live — without interrupting day-to-day operations.",
     bullets: ["Org design & data model", "AgentForce + CPQ specialties", "Migration, integrations, go-live"],
     href: "/services#implementation",
   },
   {
     title: "Optimization",
-    description: "Untangle an org that's grown messy. Audit, simplify, automate, and ship the workflow your team actually needs.",
+    description: "Untangle a Salesforce org that has grown messy. Simplify workflows, reduce technical debt, and rebuild processes your team will actually use.",
     bullets: ["Org Health Audit", "Technical debt remediation", "Architecture refactor"],
     href: "/services#optimization",
   },
   {
     title: "Managed Services",
-    description: "An on-call senior team without the headcount. Predictable monthly support that scales with the business.",
+    description: "Ongoing support, releases, and operational improvements without building an internal Salesforce team.",
     bullets: ["Backlog triage & releases", "User support, training, AgentForce tuning", "Quarterly roadmap"],
     href: "/services#managed",
   },
   {
     title: "System Mapping",
-    description: "Make the org legible. One visual map of the business process with the underlying automation overlaid — so every decision lands on something everyone can see.",
+    description: "Make the org legible. One visual map of the business process with the underlying automation overlaid — so every decision lands on something everyone can see. This gives leadership, operations, and technical teams a shared understanding of how the business actually runs inside Salesforce.",
     bullets: ["End-to-end process map", "Automation overlay", "Living source of truth"],
     href: "/system-mapping",
   },
@@ -47,7 +47,7 @@ const { services = defaultServices } = Astro.props;
     <div class="grid gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-end">
       <div>
         <span class="eyebrow">What we do</span>
-        <h2 class="mt-4 text-3xl sm:text-4xl md:text-5xl">Salesforce, set true.</h2>
+        <h2 class="mt-4 text-3xl sm:text-4xl md:text-5xl">Salesforce built to match the business.</h2>
         <span class="rule-divider mt-6"></span>
       </div>
       <p class="text-base leading-relaxed text-[color:var(--color-ink-muted)] md:max-w-prose">
