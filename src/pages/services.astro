@@ -59,12 +59,14 @@ const services = [
     title: "Managed Services",
     summary: "An on-call senior team without the headcount. Predictable monthly support that scales with the business.",
     deliverables: [
-      "Backlog triage, prioritization, and biweekly releases",
+      "Backlog triage, prioritization, and weekly releases",
+      "Ongoing Salesforce and AgentForce maintenance and enhancements",
       "User support, training, and onboarding",
-      "AgentForce ongoing support and tuning",
+      "Per-ticket documentation: technical write-up of what was changed and why, every component touched, plus the QA/testing record",
+      "System map kept current as the org evolves",
+      "CI/CD pipelines — real version control, automated deployments, audited rollback",
       "Proactive monitoring of org health and security",
       "Quarterly roadmap review with business stakeholders",
-      "Documentation kept current as the org evolves",
     ],
     bestFor: "Teams without a full-time Salesforce admin, or supplementing one.",
     timeline: "Monthly retainer, no minimum term",
@@ -78,7 +80,7 @@ const services = [
       "Process map covering the end-to-end business flow",
       "Automation overlay (Flows, Apex, integrations) on the same diagram",
       "Mermaid source committed to your repo or shared workspace",
-      "Change log as the system evolves",
+      "Versioning as the system evolves",
       "Integration into the Managed Services workflow",
     ],
     bestFor: "Teams whose org has outgrown what any one person can hold in their head.",
@@ -156,7 +158,7 @@ const services = [
           <span class="rule-divider mt-6"></span>
         </div>
         <p class="text-base leading-relaxed text-[color:var(--color-ink-muted)] md:max-w-prose">
-          Most Salesforce shops still deploy through change sets and sandbox refreshes. We don't.
+          Most Salesforce shops still deploy through change sets. We don't.
           Every engagement runs on real version control, automated deployments, and audit-grade
           rollback — so releases land predictably and you can see who changed what.
         </p>
