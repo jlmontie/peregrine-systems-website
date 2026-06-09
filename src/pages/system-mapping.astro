@@ -3,31 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeader from "../components/PageHeader.astro";
 import CTABand from "../components/CTABand.astro";
 
-// TODO: Replace illustrative example with a sanitized real artifact once the
-// client provides one (BUILDOUT.md open input #3).
-const exampleDiagram = `flowchart TD
-  Lead([Lead Created]):::process
-  Qual{Qualified?}:::decision
-  Opp([Opportunity]):::process
-  Prop([Proposal Sent]):::process
-  Won([Closed Won]):::process
-  Order([Order Created]):::process
-  Fulfil([Fulfillment]):::process
-  Disq([Disqualified]):::muted
-
-  Lead -->|Web-to-Lead Flow| Qual
-  Qual -->|Yes — Routing Apex| Opp
-  Qual -->|No| Disq
-  Opp -->|Quote Sync| Prop
-  Prop --> Won
-  Won -->|Order Sync Integration| Order
-  Order -->|ERP Webhook| Fulfil
-
-  classDef process fill:#FBFAF5,stroke:#9C7B25,stroke-width:1.5px,color:#1B1F23
-  classDef decision fill:#F0E5C4,stroke:#9C7B25,stroke-width:1.5px,color:#1B1F23
-  classDef muted fill:#F0E5C4,stroke:#B0A48A,stroke-width:1px,color:#5B6066
-`;
-
 const why = [
   {
     title: "Interception points are obvious.",
@@ -97,7 +72,13 @@ const deliverables = [
               Lead → Fulfillment
             </span>
           </figcaption>
-          <pre class="mermaid m-0 overflow-x-auto text-sm leading-tight text-[color:var(--color-ink-2)]">{exampleDiagram}</pre>
+          <img
+            src="/system-mapping-example.png"
+            alt="Example system map: a lead-to-fulfillment business process with the underlying Salesforce automation overlaid on each transition."
+            class="block w-full h-auto m-0"
+            loading="lazy"
+            decoding="async"
+          />
           <p class="mt-4 text-xs text-[color:var(--color-ink-muted)]">
             Generic B2B sales-to-fulfillment flow. The labels on the arrows are the automation overlay —
             the Flows, Apex, and integrations driving each transition.
@@ -184,27 +165,3 @@ const deliverables = [
     primaryLabel="Schedule a 30-minute consultation"
   />
 </BaseLayout>
-
-<script is:inline type="module">
-  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
-  mermaid.initialize({
-    startOnLoad: true,
-    securityLevel: "loose",
-    theme: "base",
-    themeVariables: {
-      fontFamily: "Inter, system-ui, sans-serif",
-      fontSize: "14px",
-      primaryColor: "#FBFAF5",
-      primaryTextColor: "#1B1F23",
-      primaryBorderColor: "#9C7B25",
-      lineColor: "#9C7B25",
-      secondaryColor: "#F0E5C4",
-      tertiaryColor: "#FFFFFF",
-      background: "#FBFAF5",
-    },
-    flowchart: {
-      curve: "basis",
-      padding: 16,
-    },
-  });
-</script>
