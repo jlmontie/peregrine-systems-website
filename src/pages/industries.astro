@@ -3,9 +3,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeader from "../components/PageHeader.astro";
 import CTABand from "../components/CTABand.astro";
 
-// TODO: Pare this list to the 1-3 verticals the client actually wants to win in.
-// Niche positioning is the single biggest growth lever for small Salesforce shops.
 const industries = [
+  {
+    name: "Transportation & Logistics",
+    why: "Routes, contracts, and driver operations that span dispatch, safety, and the back office.",
+    typicalWork: "Sales and Service Cloud, contract and route data models, integrations with dispatch and telematics systems.",
+  },
   {
     name: "Professional Services",
     why: "Project pipelines, utilization, and client comms — wired into one source of truth.",
@@ -31,7 +34,7 @@ const industries = [
 
 <BaseLayout
   title="Industries — Peregrine Systems"
-  description="Salesforce consulting for professional services, financial services, nonprofit, and manufacturing teams."
+  description="Salesforce consulting for transportation, professional services, financial services, nonprofit, and manufacturing teams."
 >
   <PageHeader
     eyebrow="Industries"
@@ -58,14 +61,6 @@ const industries = [
             </article>
           ))
         }
-      </div>
-
-      <div class="mt-10 rounded border border-dashed border-[color:var(--color-rule)] bg-[color:var(--color-cream-2)] p-6 text-sm text-[color:var(--color-ink-muted)]">
-        <p>
-          <strong class="text-[color:var(--color-ink)]">Note for the client.</strong>
-          Verticalization is the highest-leverage positioning decision for a small Salesforce shop. Pick one or two industries to lead with and demote the rest.
-          <!-- TODO: Confirm vertical focus and prune this list. -->
-        </p>
       </div>
     </div>
   </section>
